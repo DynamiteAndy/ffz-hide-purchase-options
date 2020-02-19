@@ -1,0 +1,15 @@
+body {
+  &.ffz-hide-purchase-options {
+    &.hide-continue-sub {
+      button[aria-label="Continue Sub"],
+      button[aria-label="Continue Sub - 7 Days Remaining"],
+      button[aria-label="Continue Sub - 6 Days Remaining"],
+      button[aria-label="Continue Sub - 5 Days Remaining"],
+      button[aria-label="Continue Sub - 4 Days Remaining"],
+      button[aria-label="Continue Sub - 3 Days Remaining"],
+      button[data-test-selector="PaidUpgradeButton"] {
+        display: none !important;
+      }
+    }
+  }
+}

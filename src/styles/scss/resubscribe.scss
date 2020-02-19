@@ -1,0 +1,9 @@
+body {
+  &.ffz-hide-purchase-options {
+    &.hide-resubscribe {
+      button[aria-label="Resubscribe"] {
+        display: none !important;
+      }
+    }
+  }
+}

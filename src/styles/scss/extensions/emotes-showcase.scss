@@ -1,0 +1,9 @@
+body {
+  &.ffz-hide-purchase-options {
+    &.hide-emotes-showcase {
+      a[title="Subscribe"] {
+        display: none !important;
+      }
+    }
+  }
+}

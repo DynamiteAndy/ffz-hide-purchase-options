@@ -1,0 +1,9 @@
+body {
+  &.ffz-hide-purchase-options {
+    &.hide-update-sub {
+      button[aria-label="Update Subscription"] {
+        display: none !important;
+      }
+    }
+  }
+}

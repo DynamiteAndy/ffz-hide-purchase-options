@@ -1,0 +1,9 @@
+body {
+  &.ffz-hide-purchase-options {
+    &.hide-manage-your-sub {
+      button[aria-label="Manage Your Sub"] {
+        display: none !important;
+      }
+    }
+  }
+}

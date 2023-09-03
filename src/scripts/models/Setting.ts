@@ -6,11 +6,13 @@ export default class Setting {
   private styleClass: string;
   private settingId: string;
   private tampermonkeySetting: boolean;
+  private settingFunction: (value: boolean) => void
 
-  constructor(settingId: string, styleClass: string, tampermonkeySetting = false) {
+  constructor(settingId: string, styleClass: string, tampermonkeySetting = false, settingFn: (value: boolean) => void = null) {
     this.settingId = settingId;
     this.styleClass = styleClass;
     this.tampermonkeySetting = tampermonkeySetting
+    this.settingFunction = settingFn;
   }
 
   public listen(): void {
@@ -24,8 +26,8 @@ export default class Setting {
     }
   }
 
-  private setClass(...args: any[]): void {
-    const { value } = parse(args);
+  private setClass(...args: unknown[]): void {
+    const { value }: { value: boolean } = parse(args);
 
     if (this.tampermonkeySetting) {
       config.settings.set(this.settingId, value);
@@ -35,6 +37,10 @@ export default class Setting {
       document.body.classList.add(this.styleClass);
     } else {
       document.body.classList.remove(this.styleClass);
+    }
+
+    if (this.settingFunction) {
+      this.settingFunction(value)
     }
   }
 }

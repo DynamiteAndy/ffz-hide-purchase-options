@@ -15,6 +15,7 @@ import { until } from './scripts/helpers/wait'
   const subscribe = require('./scripts/subscribe');
   const emotesShowcase = require('./scripts/extensions/emotes-showcase');
   const subtember = require('./scripts/subtember');
+  const turbo = require('./scripts/turbo');
 
   if (!Constants.InIframe) {
     await until(() => (unsafeWindow as any).ffz?.addons?.loaded === true);
@@ -34,5 +35,11 @@ import { until } from './scripts/helpers/wait'
   subscribe.apply();
   emotesShowcase.apply();
   subtember.apply();
+  
+  if (!Constants.InIframe) {
+    await until(() => document.querySelector('nav .ffz-top-nav') !== null);
+  }
+  
+  turbo.apply();
 })();
 /* eslint-enable @typescript-eslint/no-var-requires */

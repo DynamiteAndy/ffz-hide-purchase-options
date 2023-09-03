@@ -82,12 +82,22 @@ const addOptions = (): void => {
     },
   });
 
-    (unsafeWindow as any).ffz.addons.settings.add(Constants.Settings.Subtemeber, {
+  (unsafeWindow as any).ffz.addons.settings.add(Constants.Settings.Subtemeber, {
     default: true,
     ui: {
       path: defaultPath,
       title: 'Hide "Subtember"',
       description: 'Hides the "Subtember" advert',
+      component: 'setting-check-box',
+    },
+  });
+
+  (unsafeWindow as any).ffz.addons.settings.add(Constants.Settings.Turbo, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Turbo"',
+      description: 'Hides the "Turbo" payment option',
       component: 'setting-check-box',
     },
   });

@@ -5,6 +5,7 @@ export class Constants {
 
   static Styles = class {
     static readonly Root = "ffz-hide-purchase-options";
+    static readonly Base = "ffz-h-p-hide";
     static readonly GiftASub = "hide-gift-a-sub";
     static readonly ManageYourSub = "hide-manage-your-sub";
     static readonly Bits = "hide-bits";
@@ -14,6 +15,7 @@ export class Constants {
     static readonly UpdateSub = "hide-update-sub";
     static readonly CompletePurchase = 'hide-complete-purchase'
     static readonly Subtember = 'hide-subtember'
+    static readonly Turbo = 'hide-turbo'
 
     static Extensions = class {
       static readonly EmotesShowcase = `hide-emotes-showcase`;
@@ -31,6 +33,7 @@ export class Constants {
     static readonly Resubscribe = `${this.prefix}.resubscribe`;
     static readonly CompletePurchase = `${this.prefix}.complete_purchase`;
     static readonly Subtemeber = `${this.prefix}.subtember`;
+    static readonly Turbo = `${this.prefix}.turbo`;
 
     static Extensions = class {
       static readonly prefix = `${settingPrefix}.support-panel.extensions`

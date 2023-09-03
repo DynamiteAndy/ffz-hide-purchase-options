@@ -1,6 +1,7 @@
 body {
   &.ffz-hide-purchase-options {
     &.hide-subscribe {
+      button[aria-label="Subscribe: 25% off"],
       button[aria-label="Subscribe"] {
         display: none !important;
       }

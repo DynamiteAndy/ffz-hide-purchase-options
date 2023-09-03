@@ -123,6 +123,16 @@ const addExtensions = (): void => {
       component: 'setting-check-box',
     },
   });
+
+  (unsafeWindow as any).ffz.addons.settings.add(Constants.Settings.Extensions.LatestFollowers, {
+    default: true,
+    ui: {
+      path: extensionsPath,
+      title: 'Hide "Latest Followers"',
+      description: 'Hides payment options on the Latest Followers extension (Requires page reload to take effect)',
+      component: 'setting-check-box',
+    },
+  });
 }
 
 export const render = (): void => {

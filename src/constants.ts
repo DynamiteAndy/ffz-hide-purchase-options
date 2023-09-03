@@ -19,6 +19,7 @@ export class Constants {
 
     static Extensions = class {
       static readonly EmotesShowcase = `hide-emotes-showcase`;
+      static readonly LatestFollowers = `hide-latest-followers`;
     }
   }
 
@@ -39,6 +40,7 @@ export class Constants {
       static readonly prefix = `${settingPrefix}.support-panel.extensions`
       static readonly Text = `${this.prefix}.text`;
       static readonly EmotesShowcase = `${this.prefix}.emotes_showcase`;
+      static readonly LatestFollowers = `${this.prefix}.latest_followers`;
     }
   }
 }

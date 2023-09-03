@@ -1,0 +1,15 @@
+body {
+  &.ffz-hide-purchase-options {
+    &.hide-latest-followers {
+      &[data-active="recent"] {
+        #recent-panel {
+          .btn {
+            &.buy {
+              display: none !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

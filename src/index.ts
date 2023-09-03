@@ -14,6 +14,7 @@ import { until } from './scripts/helpers/wait'
   const resubscribe = require('./scripts/resubscribe');
   const subscribe = require('./scripts/subscribe');
   const emotesShowcase = require('./scripts/extensions/emotes-showcase');
+  const latestFollowers = require('./scripts/extensions/latest-followers');
   const subtember = require('./scripts/subtember');
   const turbo = require('./scripts/turbo');
 
@@ -35,6 +36,7 @@ import { until } from './scripts/helpers/wait'
   subscribe.apply();
   emotesShowcase.apply();
   subtember.apply();
+  latestFollowers.apply();
   
   if (!Constants.InIframe) {
     await until(() => document.querySelector('nav .ffz-top-nav') !== null);

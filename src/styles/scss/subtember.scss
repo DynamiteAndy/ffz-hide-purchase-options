@@ -1,0 +1,9 @@
+body {
+  &.ffz-hide-purchase-options {
+    &.hide-subtember {
+      .subtember-gradient {
+        display: none !important;
+      }
+    }
+  }
+}

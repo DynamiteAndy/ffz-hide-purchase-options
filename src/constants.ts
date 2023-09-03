@@ -13,6 +13,7 @@ export class Constants {
     static readonly ContinueSub = "hide-continue-sub";
     static readonly UpdateSub = "hide-update-sub";
     static readonly CompletePurchase = 'hide-complete-purchase'
+    static readonly Subtember = 'hide-subtember'
 
     static Extensions = class {
       static readonly EmotesShowcase = `hide-emotes-showcase`;
@@ -29,6 +30,7 @@ export class Constants {
     static readonly Subscribe = `${this.prefix}.subscribe`;
     static readonly Resubscribe = `${this.prefix}.resubscribe`;
     static readonly CompletePurchase = `${this.prefix}.complete_purchase`;
+    static readonly Subtemeber = `${this.prefix}.subtember`;
 
     static Extensions = class {
       static readonly prefix = `${settingPrefix}.support-panel.extensions`

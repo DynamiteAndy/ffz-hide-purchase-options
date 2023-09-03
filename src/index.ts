@@ -14,6 +14,7 @@ import { until } from './scripts/helpers/wait'
   const resubscribe = require('./scripts/resubscribe');
   const subscribe = require('./scripts/subscribe');
   const emotesShowcase = require('./scripts/extensions/emotes-showcase');
+  const subtember = require('./scripts/subtember');
 
   if (!Constants.InIframe) {
     await until(() => (unsafeWindow as any).ffz?.addons?.loaded === true);
@@ -32,5 +33,6 @@ import { until } from './scripts/helpers/wait'
   resubscribe.apply();
   subscribe.apply();
   emotesShowcase.apply();
+  subtember.apply();
 })();
 /* eslint-enable @typescript-eslint/no-var-requires */

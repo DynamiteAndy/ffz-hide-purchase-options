@@ -1,6 +1,6 @@
 {
   "name": "ffz-hide-purchase-options",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Unofficial FFZ addon giving options to remove purchases from twitch",
   "private": true,
   "scripts": {

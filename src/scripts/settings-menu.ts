@@ -52,6 +52,16 @@ const addOptions = (): void => {
     },
   });
 
+  (unsafeWindow as any).ffz.addons.settings.add(Constants.Settings.HypeChat, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Hype Chat"',
+      description: 'Hides the "Hype Chat" payment option',
+      component: 'setting-check-box',
+    },
+  });
+
   (unsafeWindow as any).ffz.addons.settings.add(Constants.Settings.ManageYourSub, {
     default: true,
     ui: {

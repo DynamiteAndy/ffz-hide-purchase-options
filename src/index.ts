@@ -17,6 +17,7 @@ import { until } from './scripts/helpers/wait'
   const latestFollowers = require('./scripts/extensions/latest-followers');
   const subtember = require('./scripts/subtember');
   const turbo = require('./scripts/turbo');
+  const hypeChat = require('./scripts/hype-chat');
 
   if (!Constants.InIframe) {
     await until(() => (unsafeWindow as any).ffz?.addons?.loaded === true);
@@ -24,6 +25,8 @@ import { until } from './scripts/helpers/wait'
   } else {
     await until(() => document.readyState === 'complete');
   }
+
+  console.debug('[hide-purchase-options] - Applying');
 
   styles.apply();
   bits.apply();
@@ -39,9 +42,14 @@ import { until } from './scripts/helpers/wait'
   latestFollowers.apply();
   
   if (!Constants.InIframe) {
-    await until(() => document.querySelector('nav .ffz-top-nav') !== null);
+    console.debug('[hide-purchase-options] - Waiting for Observer and Top Nav');
+    await until(() => (unsafeWindow as any).ffz?.site?.elemental._observer === null && document.querySelector('nav .ffz-top-nav') !== null);
+    console.debug('[hide-purchase-options] - Done waiting for Observer and Top Nav');
   }
   
   turbo.apply();
+  hypeChat.apply();
+
+  console.debug('[hide-purchase-options] - Finished applying');
 })();
 /* eslint-enable @typescript-eslint/no-var-requires */

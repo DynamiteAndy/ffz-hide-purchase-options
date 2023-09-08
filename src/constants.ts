@@ -13,9 +13,10 @@ export class Constants {
     static readonly Resubscribe = "hide-resubscribe";
     static readonly ContinueSub = "hide-continue-sub";
     static readonly UpdateSub = "hide-update-sub";
-    static readonly CompletePurchase = 'hide-complete-purchase'
-    static readonly Subtember = 'hide-subtember'
-    static readonly Turbo = 'hide-turbo'
+    static readonly CompletePurchase = 'hide-complete-purchase';
+    static readonly Subtember = 'hide-subtember';
+    static readonly Turbo = 'hide-turbo';
+    static readonly HypeChat = 'hide-hype-chat';
 
     static Extensions = class {
       static readonly EmotesShowcase = `hide-emotes-showcase`;
@@ -35,6 +36,7 @@ export class Constants {
     static readonly CompletePurchase = `${this.prefix}.complete_purchase`;
     static readonly Subtemeber = `${this.prefix}.subtember`;
     static readonly Turbo = `${this.prefix}.turbo`;
+    static readonly HypeChat = `${this.prefix}.hype_chat`;
 
     static Extensions = class {
       static readonly prefix = `${settingPrefix}.support-panel.extensions`

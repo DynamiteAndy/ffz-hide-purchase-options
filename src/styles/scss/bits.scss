@@ -1,6 +1,7 @@
 body {
   &.ffz-hide-purchase-options {
     &.hide-bits {
+      button[aria-label="Bits"],
       button[data-test-selector="get-bits-button"],
       button[data-a-target="top-nav-get-bits-button"],
       button[data-a-target="bits-purchase-button-100"],

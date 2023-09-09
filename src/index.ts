@@ -18,12 +18,13 @@ import { until } from './scripts/helpers/wait'
   const subtember = require('./scripts/subtember');
   const turbo = require('./scripts/turbo');
   const hypeChat = require('./scripts/hype-chat');
+  const charity = require('./scripts/charity');
 
   if (!Constants.InIframe) {
     await until(() => (unsafeWindow as any).ffz?.addons?.loaded === true);
     settings.render();
   } else {
-    await until(() => document.readyState === 'complete');
+    await until(() => document.readyState === 'complete' && (unsafeWindow as any).ffz?.on !== undefined);
   }
 
   console.debug('[hide-purchase-options] - Applying');
@@ -47,6 +48,7 @@ import { until } from './scripts/helpers/wait'
     console.debug('[hide-purchase-options] - Done waiting for Observer and Top Nav');
   }
   
+  charity.apply();
   turbo.apply();
   hypeChat.apply();
 

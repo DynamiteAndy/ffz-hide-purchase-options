@@ -42,6 +42,16 @@ const addOptions = (): void => {
     },
   });
 
+  (unsafeWindow as any).ffz.addons.settings.add(Constants.Settings.Charity, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Donate To Charity"',
+      description: 'Hides the "Donate To Charity" payment option',
+      component: 'setting-check-box',
+    },
+  });
+
   (unsafeWindow as any).ffz.addons.settings.add(Constants.Settings.GiftASub, {
     default: true,
     ui: {

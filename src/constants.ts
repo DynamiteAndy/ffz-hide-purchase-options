@@ -17,6 +17,7 @@ export class Constants {
     static readonly Subtember = 'hide-subtember';
     static readonly Turbo = 'hide-turbo';
     static readonly HypeChat = 'hide-hype-chat';
+    static readonly Charity = 'hide-charity';
 
     static Extensions = class {
       static readonly EmotesShowcase = `hide-emotes-showcase`;
@@ -37,6 +38,7 @@ export class Constants {
     static readonly Subtemeber = `${this.prefix}.subtember`;
     static readonly Turbo = `${this.prefix}.turbo`;
     static readonly HypeChat = `${this.prefix}.hype_chat`;
+    static readonly Charity = `${this.prefix}.charity`;
 
     static Extensions = class {
       static readonly prefix = `${settingPrefix}.support-panel.extensions`

@@ -7,6 +7,7 @@ export default class Setting {
   private settingId: string;
   private tampermonkeySetting: boolean;
   private settingFunction: (value: boolean) => void
+  private eventListener = () => this.setClass({ value: (unsafeWindow as any).ffz.addons.settings.get(this.settingId) });
 
   constructor(settingId: string, styleClass: string, tampermonkeySetting = false, settingFn: (value: boolean) => void = null) {
     this.settingId = settingId;
@@ -23,6 +24,8 @@ export default class Setting {
 
     if (!Constants.InIframe) {
       (unsafeWindow as any).ffz.addons.settings.getChanges(this.settingId, this.setClass.bind(this));
+      (unsafeWindow as any).ffz.on('chat:room-add', this.eventListener);
+      (unsafeWindow as any).ffz.on('chat:room-remove', this.eventListener);
     }
   }
 

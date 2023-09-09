@@ -1,34 +1,27 @@
 import { Constants } from "../constants";
 import Setting from "./models/Setting";
 
-let turboButton = null;
-
 const toggleTurboButton = (value: boolean) => {
-  if (!turboButton) {
-    let currentNode = null;
-    for (const element of [...document.querySelectorAll('[data-a-target="top-nav-container"] [data-a-target="tw-core-button-label-text"]')]) {
-      if (element.textContent.trim() === 'Get Ad-Free') {
-        currentNode = element;
-        break;
-      }
-    }
+  let currentNode = null;
 
-    while (currentNode) {
-      if (currentNode.nextElementSibling?.classList?.contains('ffz-top-nav')) {
-        turboButton = currentNode;
-        break;
-      }
-
-      currentNode = currentNode.parentElement;
+  for (const element of [...document.querySelectorAll('[data-a-target="top-nav-container"] [data-a-target="tw-core-button-label-text"]')]) {
+    if (element.textContent.trim() === 'Get Ad-Free') {
+      currentNode = element;
+      break;
     }
   }
 
-  if (turboButton) {
-    if (value) {
-      turboButton.classList.add(Constants.Styles.Base);
-    } else {
-      turboButton.classList.remove(Constants.Styles.Base);
+  while (currentNode) {
+    if (currentNode.nextElementSibling?.classList?.contains('ffz-top-nav')) {
+        if (value) {
+          currentNode.classList?.add(Constants.Styles.Base);
+        } else {
+          currentNode.classList?.remove(Constants.Styles.Base);
+        }
+      break;
     }
+
+    currentNode = currentNode.parentElement;
   }
 };
 

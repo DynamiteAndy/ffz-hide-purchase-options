@@ -1,0 +1,14 @@
+body {
+  &.ffz-hide-purchase-options {
+    &.hide-emotes-showcase {
+      a[title="Subscribe"],
+      a[title="Subscribe for"] {
+        display: none !important;
+      }
+
+      button#overlaysub {
+        display: none !important;
+      }
+    }
+  }
+}

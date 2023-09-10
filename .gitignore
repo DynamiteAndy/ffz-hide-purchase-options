@@ -184,8 +184,10 @@ App_Data
 .vs
 
 # Userscript Files
+!build/
 dist/*
-!dist/ffz-hide-purchase-options.min.user.js
+!dist/*.user.js
+dist/*.dev.user.js
 coverage
 .nyc_output
 config.json

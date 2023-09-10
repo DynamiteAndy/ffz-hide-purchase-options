@@ -1,57 +1,73 @@
-import { Constants } from './constants';
-import { until } from './scripts/helpers/wait'
+import { Constants } from '@hpo-globals';
+import { until } from '@hpo-helpers';
+import { allConcurrently } from '@hpo-utilities';
+import {
+  Bits,
+  Charity,
+  CompletePurchase,
+  ContinueSub,
+  Gift,
+  HypeChat,
+  ManageYourSub,
+  Resubscribe,
+  SettingsMenu,
+  Styles,
+  Subscribe,
+  Subtember,
+  Turbo,
+  UpdateSub
+} from '@hpo-features';
+import { EmotesShowcase, LatestFollowers } from '@hpo-feature-extensions';
 
-/* eslint-disable @typescript-eslint/no-var-requires */
 (async () => {
-  const styles = require('./styles/index');
-  const settings = require('./scripts/settings-menu');
-  const bits = require('./scripts/bits');
-  const continueSub = require('./scripts/continue-sub');
-  const updateSub = require('./scripts/update-sub');
-  const completePurchase = require('./scripts/complete-purchase');
-  const gift = require('./scripts/gift');
-  const manageYourSub = require('./scripts/manage-your-sub');
-  const resubscribe = require('./scripts/resubscribe');
-  const subscribe = require('./scripts/subscribe');
-  const emotesShowcase = require('./scripts/extensions/emotes-showcase');
-  const latestFollowers = require('./scripts/extensions/latest-followers');
-  const subtember = require('./scripts/subtember');
-  const turbo = require('./scripts/turbo');
-  const hypeChat = require('./scripts/hype-chat');
-  const charity = require('./scripts/charity');
+  const consoleHeading = Constants.IsExtension
+    ? '[hide-purchase-options (Extension)]'
+    : '[hide-purchase-options (Twitch)]';
 
-  if (!Constants.InIframe) {
-    await until(() => (unsafeWindow as any).ffz?.addons?.loaded === true && (unsafeWindow as any).ffz?.on !== undefined);
-    settings.render();
-  } else {
-    await until(() => document.readyState === 'complete');
-  }
+  await until(() =>
+    !Constants.InIframe
+      ? unsafeWindow.ffz?.addons?.loaded === true && unsafeWindow.ffz?.on !== undefined
+      : document.readyState === 'complete'
+  );
 
-  console.debug('[hide-purchase-options] - Applying');
+  console.debug(`${consoleHeading} - Applying`);
 
-  styles.apply();
-  bits.apply();
-  continueSub.apply();
-  updateSub.apply();
-  completePurchase.apply();
-  gift.apply();
-  manageYourSub.apply();
-  resubscribe.apply();
-  subscribe.apply();
-  emotesShowcase.apply();
-  subtember.apply();
-  latestFollowers.apply();
-  
-  if (!Constants.InIframe) {
-    console.debug('[hide-purchase-options] - Waiting for Observer and Top Nav');
-    await until(() => (unsafeWindow as any).ffz?.site?.elemental._observer === null && document.querySelector('nav .ffz-top-nav') !== null);
-    console.debug('[hide-purchase-options] - Done waiting for Observer and Top Nav');
-  }
-  
-  charity.apply();
-  turbo.apply();
-  hypeChat.apply();
+  allConcurrently(
+    'Features',
+    [
+      { name: 'feature:settings-menu', task: SettingsMenu },
+      { name: 'feature:styles', task: Styles },
+      { name: 'feature:bits', task: Bits },
+      { name: 'feature:complete-purchase', task: CompletePurchase },
+      { name: 'feature:continue-sub', task: ContinueSub },
+      { name: 'feature:gift', task: Gift },
+      { name: 'feature:manage-your-sub', task: ManageYourSub },
+      { name: 'feature:resubscribe', task: Resubscribe },
+      { name: 'feature:subscribe', task: Subscribe },
+      { name: 'feature:subtember', task: Subtember },
+      { name: 'feature:update-sub', task: UpdateSub }
+    ],
+    4
+  );
 
-  console.debug('[hide-purchase-options] - Finished applying');
+  allConcurrently(
+    'Feature Extensions',
+    [
+      { name: 'feature-extension:emotes-showcase', task: EmotesShowcase },
+      { name: 'feature-extension:latest-followers', task: LatestFollowers }
+    ],
+    4
+  );
+
+  allConcurrently(
+    'Dynamic Features',
+    [
+      { name: 'dynamic-feature:charity', task: Charity },
+      { name: 'dynamic-feature:hype-chat', task: HypeChat },
+      { name: 'dynamic-feature:turbo', task: Turbo }
+    ],
+    4
+  );
+
+  console.debug(`${consoleHeading} - Finished`);
 })();
-/* eslint-enable @typescript-eslint/no-var-requires */

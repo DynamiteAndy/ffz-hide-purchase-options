@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.1.0
+- Added support for MyEmotes Extension
+
 ## 2.0.0
 - Moved to webpack,
 - Added better support for extensions,

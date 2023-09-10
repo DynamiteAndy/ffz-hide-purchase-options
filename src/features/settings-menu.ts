@@ -153,6 +153,16 @@ const addExtensions = (): void => {
       component: 'setting-check-box'
     }
   });
+
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.Extensions.MyEmotes, {
+    default: true,
+    ui: {
+      path: extensionsPath,
+      title: 'Hide "MyEmotes',
+      description: 'Hides payment options on the MyEmotes extension',
+      component: 'setting-check-box'
+    }
+  });
 };
 
 export default async (): Promise<void> => {

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          FFZ Hide Purchase Options
 // @namespace     dynamite-andy
-// @version       2.0.0
+// @version       2.1.0
 // @iconURL       https://github.com/andrewcartwright1/ffz-hide-purchase-options/blob/main/src/resources/icons/favicon32x32.ico?raw=true
 // @icon64URL     https://github.com/andrewcartwright1/ffz-hide-purchase-options/blob/main/src/resources/icons/favicon64x64.ico?raw=true
 // @updateURL     https://github.com/andrewcartwright1/ffz-hide-purchase-options/raw/main/dist/ffz-hide-purchase-options.user.js
@@ -62,6 +62,7 @@ Constants.Styles = (_a = class {
         __setFunctionName(_b, "Extensions"),
         _b.EmotesShowcase = 'hide-emotes-showcase',
         _b.LatestFollowers = 'hide-latest-followers',
+        _b.MyEmotes = 'hide-my-emotes',
         _b),
     _a);
 Constants.Settings = (_c = class {
@@ -87,6 +88,7 @@ Constants.Settings = (_c = class {
         _d.Text = `${_d.prefix}.text`,
         _d.EmotesShowcase = `${_d.prefix}.emotes_showcase`,
         _d.LatestFollowers = `${_d.prefix}.latest_followers`,
+        _d.MyEmotes = `${_d.prefix}.my_emotes`,
         _d),
     _c);
 
@@ -458,6 +460,15 @@ const addExtensions = () => {
             component: 'setting-check-box'
         }
     });
+    unsafeWindow.ffz.addons.settings.add(Constants.Settings.Extensions.MyEmotes, {
+        default: true,
+        ui: {
+            path: extensionsPath,
+            title: 'Hide "MyEmotes',
+            description: 'Hides payment options on the MyEmotes extension',
+            component: 'setting-check-box'
+        }
+    });
 };
 /* harmony default export */ const settings_menu = (async () => {
     if (Constants.IsExtension) {
@@ -470,7 +481,7 @@ const addExtensions = () => {
 
 ;// CONCATENATED MODULE: ./src/scss/index.scss
 
-        const styles = `body.ffz-hide-purchase-options .ffz-h-p-hide{display:none !important}body.ffz-hide-purchase-options.hide-bits button[aria-label=Bits],body.ffz-hide-purchase-options.hide-bits button[data-test-selector=get-bits-button],body.ffz-hide-purchase-options.hide-bits button[data-a-target=top-nav-get-bits-button],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-100],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-500],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-1500],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-5000],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-10000],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-25000],body.ffz-hide-purchase-options.hide-bits a[data-test-selector=test_selector_buy_bits_button]{display:none !important}body.ffz-hide-purchase-options.hide-manage-your-sub button[data-a-target=spm-complete-purchase-button]{display:none !important}body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 7 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 6 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 5 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 4 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 3 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub: 25% off"],body.ffz-hide-purchase-options.hide-continue-sub button[data-test-selector=PaidUpgradeButton]{display:none !important}body.ffz-hide-purchase-options.hide-emotes-showcase a[title=Subscribe],body.ffz-hide-purchase-options.hide-emotes-showcase a[title="Subscribe for"]{display:none !important}body.ffz-hide-purchase-options.hide-emotes-showcase button#overlaysub{display:none !important}body.ffz-hide-purchase-options.hide-latest-followers[data-active=recent] #recent-panel .btn.buy{display:none !important}body.ffz-hide-purchase-options.hide-gift-a-sub button[aria-label="Gift a Sub"],body.ffz-hide-purchase-options.hide-gift-a-sub button[data-test-selector=gift-subscribe-button],body.ffz-hide-purchase-options.hide-gift-a-sub button[data-test-selector=take-the-leaderboard-prompt-button]{display:none !important}body.ffz-hide-purchase-options.hide-hype-chat button[aria-label="Hype Chat"]{display:none !important}body.ffz-hide-purchase-options.hide-manage-your-sub button[aria-label="Manage Your Sub: 25% off"],body.ffz-hide-purchase-options.hide-manage-your-sub button[aria-label="Manage Your Sub"]{display:none !important}body.ffz-hide-purchase-options.hide-resubscribe button[aria-label="Resubscribe: 25% off"],body.ffz-hide-purchase-options.hide-resubscribe button[aria-label=Resubscribe]{display:none !important}body.ffz-hide-purchase-options.hide-subscribe button[aria-label="Subscribe: 25% off"],body.ffz-hide-purchase-options.hide-subscribe button[aria-label=Subscribe]{display:none !important}body.ffz-hide-purchase-options.hide-subtember .subtember-gradient{display:none !important}body.ffz-hide-purchase-options.hide-update-sub button[aria-label="Update Subscription"]{display:none !important}`;
+        const styles = `body.ffz-hide-purchase-options .ffz-h-p-hide{display:none !important}body.ffz-hide-purchase-options.hide-bits button[aria-label=Bits],body.ffz-hide-purchase-options.hide-bits button[data-test-selector=get-bits-button],body.ffz-hide-purchase-options.hide-bits button[data-a-target=top-nav-get-bits-button],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-100],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-500],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-1500],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-5000],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-10000],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-25000],body.ffz-hide-purchase-options.hide-bits a[data-test-selector=test_selector_buy_bits_button]{display:none !important}body.ffz-hide-purchase-options.hide-manage-your-sub button[data-a-target=spm-complete-purchase-button]{display:none !important}body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 7 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 6 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 5 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 4 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 3 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub: 25% off"],body.ffz-hide-purchase-options.hide-continue-sub button[data-test-selector=PaidUpgradeButton]{display:none !important}body.ffz-hide-purchase-options.hide-emotes-showcase a[title=Subscribe],body.ffz-hide-purchase-options.hide-emotes-showcase a[title="Subscribe for"]{display:none !important}body.ffz-hide-purchase-options.hide-emotes-showcase button#overlaysub{display:none !important}body.ffz-hide-purchase-options.hide-latest-followers[data-active=recent] #recent-panel .btn.buy{display:none !important}body.ffz-hide-purchase-options.hide-my-emotes #root .extension-mode-navigation a[href*="https://twitch.tv/subs/"]{display:none !important}body.ffz-hide-purchase-options.hide-gift-a-sub button[aria-label="Gift a Sub"],body.ffz-hide-purchase-options.hide-gift-a-sub button[data-test-selector=gift-subscribe-button],body.ffz-hide-purchase-options.hide-gift-a-sub button[data-test-selector=take-the-leaderboard-prompt-button]{display:none !important}body.ffz-hide-purchase-options.hide-hype-chat button[aria-label="Hype Chat"]{display:none !important}body.ffz-hide-purchase-options.hide-manage-your-sub button[aria-label="Manage Your Sub: 25% off"],body.ffz-hide-purchase-options.hide-manage-your-sub button[aria-label="Manage Your Sub"]{display:none !important}body.ffz-hide-purchase-options.hide-resubscribe button[aria-label="Resubscribe: 25% off"],body.ffz-hide-purchase-options.hide-resubscribe button[aria-label=Resubscribe]{display:none !important}body.ffz-hide-purchase-options.hide-subscribe button[aria-label="Subscribe: 25% off"],body.ffz-hide-purchase-options.hide-subscribe button[aria-label=Subscribe]{display:none !important}body.ffz-hide-purchase-options.hide-subtember .subtember-gradient{display:none !important}body.ffz-hide-purchase-options.hide-update-sub button[aria-label="Update Subscription"]{display:none !important}`;
         /* harmony default export */ const scss = (styles);
     
 ;// CONCATENATED MODULE: ./src/features/styles.ts
@@ -591,7 +602,16 @@ const listen = () => {
     setting.listen();
 });
 
+;// CONCATENATED MODULE: ./src/features/extensions/my-emotes.ts
+
+
+/* harmony default export */ const my_emotes = (async () => {
+    const setting = new Setting(Constants.Settings.Extensions.MyEmotes, Constants.Styles.Extensions.MyEmotes, true);
+    setting.listen();
+});
+
 ;// CONCATENATED MODULE: ./src/features/extensions/index.ts
+
 
 
 
@@ -624,7 +644,8 @@ const listen = () => {
     ], 4);
     allConcurrently('Feature Extensions', [
         { name: 'feature-extension:emotes-showcase', task: emotes_showcase },
-        { name: 'feature-extension:latest-followers', task: latest_followers }
+        { name: 'feature-extension:latest-followers', task: latest_followers },
+        { name: 'feature-extension:my-emotes', task: my_emotes }
     ], 4);
     allConcurrently('Dynamic Features', [
         { name: 'dynamic-feature:charity', task: charity },

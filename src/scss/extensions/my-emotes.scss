@@ -1,0 +1,13 @@
+body {
+  &.ffz-hide-purchase-options {
+    &.hide-my-emotes {
+      #root {
+        .extension-mode-navigation {
+          a[href*="https://twitch.tv/subs/"] {
+            display: none !important;
+          }
+        }
+      }
+    }
+  }
+}

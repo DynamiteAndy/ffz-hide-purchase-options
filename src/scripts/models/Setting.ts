@@ -1,13 +1,15 @@
 import config from "../../config";
 import { Constants } from "../../constants";
-import { parse } from "../helpers/get-changes-args-util";
 
 export default class Setting {
   private styleClass: string;
   private settingId: string;
   private tampermonkeySetting: boolean;
   private settingFunction: (value: boolean) => void
-  private eventListener = () => this.setClass({ value: (unsafeWindow as any).ffz.addons.settings.get(this.settingId) });
+  private eventListener = () => {
+    const value = config.settings.get(this.settingId);
+    this.setClass(value, !value, false)
+  };
 
   constructor(settingId: string, styleClass: string, tampermonkeySetting = false, settingFn: (value: boolean) => void = null) {
     this.settingId = settingId;
@@ -18,7 +20,9 @@ export default class Setting {
 
   public listen(): void {
     if (Constants.InIframe && this.tampermonkeySetting) {
-      this.setClass(config.settings.get(this.settingId));
+      const value = config.settings.get(this.settingId);
+      this.setClass(value, !value);
+      GM_addValueChangeListener(this.settingId, (_key, oldValue, newValue) => this.setClass(newValue, oldValue, false));
       return;
     }
 
@@ -29,21 +33,19 @@ export default class Setting {
     }
   }
 
-  private setClass(...args: unknown[]): void {
-    const { value }: { value: boolean } = parse(args);
-
-    if (this.tampermonkeySetting) {
-      config.settings.set(this.settingId, value);
+  private setClass(newValue: boolean, _oldValue: boolean, updateGMValue = true): void {
+    if (this.tampermonkeySetting && updateGMValue) {
+      config.settings.set(this.settingId, newValue);
     }
 
-    if (value) {
+    if (newValue) {
       document.body.classList.add(this.styleClass);
     } else {
       document.body.classList.remove(this.styleClass);
     }
 
     if (this.settingFunction) {
-      this.settingFunction(value)
+      this.settingFunction(newValue)
     }
   }
 }

@@ -21,10 +21,10 @@ import { until } from './scripts/helpers/wait'
   const charity = require('./scripts/charity');
 
   if (!Constants.InIframe) {
-    await until(() => (unsafeWindow as any).ffz?.addons?.loaded === true);
+    await until(() => (unsafeWindow as any).ffz?.addons?.loaded === true && (unsafeWindow as any).ffz?.on !== undefined);
     settings.render();
   } else {
-    await until(() => document.readyState === 'complete' && (unsafeWindow as any).ffz?.on !== undefined);
+    await until(() => document.readyState === 'complete');
   }
 
   console.debug('[hide-purchase-options] - Applying');

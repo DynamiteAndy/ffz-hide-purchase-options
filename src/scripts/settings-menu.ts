@@ -139,7 +139,7 @@ const addExtensions = (): void => {
     ui: {
       path: extensionsPath,
       title: 'Hide "Emotes Showcase"',
-      description: 'Hides payment options on the Emotes Showcase extension (Requires page reload to take effect)',
+      description: 'Hides payment options on the Emotes Showcase extension',
       component: 'setting-check-box',
     },
   });
@@ -149,7 +149,7 @@ const addExtensions = (): void => {
     ui: {
       path: extensionsPath,
       title: 'Hide "Latest Followers"',
-      description: 'Hides payment options on the Latest Followers extension (Requires page reload to take effect)',
+      description: 'Hides payment options on the Latest Followers extension',
       component: 'setting-check-box',
     },
   });

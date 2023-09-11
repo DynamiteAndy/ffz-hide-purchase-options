@@ -17,7 +17,7 @@ import {
   Turbo,
   UpdateSub
 } from '@hpo-features';
-import { EmotesShowcase, LatestFollowers, MyEmotes } from '@hpo-feature-extensions';
+import { EmotesShowcase, FeaturedViewer, LatestFollowers, MyEmotes } from '@hpo-feature-extensions';
 
 (async () => {
   const consoleHeading = Constants.IsExtension
@@ -54,6 +54,7 @@ import { EmotesShowcase, LatestFollowers, MyEmotes } from '@hpo-feature-extensio
     'Feature Extensions',
     [
       { name: 'feature-extension:emotes-showcase', task: EmotesShowcase },
+      { name: 'feature-extension:featured-viewer', task: FeaturedViewer },
       { name: 'feature-extension:latest-followers', task: LatestFollowers },
       { name: 'feature-extension:my-emotes', task: MyEmotes }
     ],

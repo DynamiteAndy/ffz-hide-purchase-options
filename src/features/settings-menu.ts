@@ -144,6 +144,16 @@ const addExtensions = (): void => {
     }
   });
 
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.Extensions.FeaturedViewer, {
+    default: true,
+    ui: {
+      path: extensionsPath,
+      title: 'Hide "Featured Viewer"',
+      description: 'Hides payment options on the Featured Viewer extension',
+      component: 'setting-check-box'
+    }
+  });
+
   unsafeWindow.ffz.addons.settings.add(Constants.Settings.Extensions.LatestFollowers, {
     default: true,
     ui: {

@@ -1,0 +1,11 @@
+body {
+  &.ffz-hide-purchase-options {
+    &.hide-featured-viewer {
+      button {
+        &.shoutout__button--me {
+          display: none !important;
+        }
+      }
+    }
+  }
+}

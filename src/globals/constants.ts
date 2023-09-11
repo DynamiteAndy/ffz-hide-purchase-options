@@ -24,6 +24,7 @@ export class Constants {
       static readonly EmotesShowcase = 'hide-emotes-showcase';
       static readonly LatestFollowers = 'hide-latest-followers';
       static readonly MyEmotes = 'hide-my-emotes';
+      static readonly FeaturedViewer = 'hide-featured-viewer';
     };
   };
 
@@ -48,6 +49,7 @@ export class Constants {
       static readonly EmotesShowcase = `${this.prefix}.emotes_showcase`;
       static readonly LatestFollowers = `${this.prefix}.latest_followers`;
       static readonly MyEmotes = `${this.prefix}.my_emotes`;
+      static readonly FeaturedViewer = `${this.prefix}.featured_viewer`;
     };
   };
 }

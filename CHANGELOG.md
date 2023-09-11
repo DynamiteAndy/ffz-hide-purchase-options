@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.2.1
+- Fixed some selectors on the subscriptions page
+
 ## 2.2.0
 - Added support for Featured Viewer Extension
 

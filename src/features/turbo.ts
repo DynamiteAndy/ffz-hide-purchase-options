@@ -1,10 +1,10 @@
 import { Constants } from '@hpo-globals';
-import { until } from '@hpo-helpers';
 import { Setting } from '@hpo-models';
+import { waitForElement } from '@hpo-utilities';
 
 export default async (): Promise<void> => {
   if (!Constants.InIframe) {
-    await until(() => document.querySelector('nav .ffz-top-nav') !== null);
+    await waitForElement('nav .ffz-top-nav');
   }
 
   const toggleTurboButton = (value: boolean) => {

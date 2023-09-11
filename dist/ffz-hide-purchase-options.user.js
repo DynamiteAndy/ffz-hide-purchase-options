@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          FFZ Hide Purchase Options
 // @namespace     dynamite-andy
-// @version       2.1.0
+// @version       2.2.1
 // @iconURL       https://github.com/andrewcartwright1/ffz-hide-purchase-options/blob/main/src/resources/icons/favicon32x32.ico?raw=true
 // @icon64URL     https://github.com/andrewcartwright1/ffz-hide-purchase-options/blob/main/src/resources/icons/favicon64x64.ico?raw=true
 // @updateURL     https://github.com/andrewcartwright1/ffz-hide-purchase-options/raw/main/dist/ffz-hide-purchase-options.user.js
@@ -277,11 +277,102 @@ class Setting {
     setting.listen();
 });
 
+;// CONCATENATED MODULE: ./src/utilities/html-element-util.ts
+const waitForElement = (selector, element = document.documentElement, timeoutMS = 10000) => new Promise((resolve) => {
+    if (element === null) {
+        return null;
+    }
+    if (element === document.documentElement) {
+        element = document.documentElement;
+    }
+    if (element.querySelector(selector)) {
+        return resolve(element.querySelector(selector));
+    }
+    let observer;
+    const timeout = setTimeout(() => {
+        observer.disconnect();
+        resolve(null);
+    }, timeoutMS);
+    observer = new MutationObserver(() => {
+        if (element.querySelector(selector)) {
+            observer.disconnect();
+            clearTimeout(timeout);
+            resolve(element.querySelector(selector));
+        }
+    });
+    observer.observe(element, {
+        childList: true,
+        subtree: true
+    });
+});
+const waitForElements = (selector, element = document.documentElement, timeoutMS = 10000) => new Promise((resolve) => {
+    if (element === null) {
+        return [];
+    }
+    if (element === document.documentElement) {
+        element = document.documentElement;
+    }
+    if (element.querySelector(selector)) {
+        return resolve([...element.querySelectorAll(selector)]);
+    }
+    let observer;
+    const timeout = setTimeout(() => {
+        observer.disconnect();
+        resolve([]);
+    }, timeoutMS);
+    observer = new MutationObserver(() => {
+        if (element.querySelector(selector)) {
+            observer.disconnect();
+            clearTimeout(timeout);
+            resolve([...element.querySelectorAll(selector)]);
+        }
+    });
+    observer.observe(element, {
+        childList: true,
+        subtree: true
+    });
+});
+const getElementCoordinates = (element) => {
+    const box = element.getBoundingClientRect();
+    const body = document.body;
+    const docEl = document.documentElement;
+    const scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+    const scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+    const clientTop = docEl.clientTop || body.clientTop || 0;
+    const clientLeft = docEl.clientLeft || body.clientLeft || 0;
+    const top = box.top + scrollTop - clientTop;
+    const left = box.left + scrollLeft - clientLeft;
+    return { top: Math.round(top), left: Math.round(left) };
+};
+const removeAllChildren = (element) => {
+    while (element.firstChild) {
+        element.removeChild(element.lastChild);
+    }
+};
+
 ;// CONCATENATED MODULE: ./src/features/gift.ts
 
 
+
 /* harmony default export */ const gift = (async () => {
-    const setting = new Setting(Constants.Settings.GiftASub, Constants.Styles.GiftASub);
+    const toggleGiftASubButton = async (value) => {
+        let currentNode = null;
+        const elements = await waitForElements('.support-panel [data-a-target="tw-core-button-label-text"]');
+        for (const element of elements) {
+            if (element.textContent.trim() === 'Gift a Sub') {
+                currentNode = element;
+                break;
+            }
+        }
+        const giftASubButton = currentNode?.closest('button');
+        if (value) {
+            giftASubButton?.classList?.add(Constants.Styles.Base);
+        }
+        else {
+            giftASubButton?.classList?.remove(Constants.Styles.Base);
+        }
+    };
+    const setting = new Setting(Constants.Settings.GiftASub, Constants.Styles.GiftASub, false, toggleGiftASubButton);
     setting.listen();
 });
 
@@ -492,7 +583,7 @@ const addExtensions = () => {
 
 ;// CONCATENATED MODULE: ./src/scss/index.scss
 
-        const styles = `body.ffz-hide-purchase-options .ffz-h-p-hide{display:none !important}body.ffz-hide-purchase-options.hide-bits button[aria-label=Bits],body.ffz-hide-purchase-options.hide-bits button[data-test-selector=get-bits-button],body.ffz-hide-purchase-options.hide-bits button[data-a-target=top-nav-get-bits-button],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-100],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-500],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-1500],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-5000],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-10000],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-25000],body.ffz-hide-purchase-options.hide-bits a[data-test-selector=test_selector_buy_bits_button]{display:none !important}body.ffz-hide-purchase-options.hide-manage-your-sub button[data-a-target=spm-complete-purchase-button]{display:none !important}body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 7 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 6 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 5 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 4 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 3 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub: 25% off"],body.ffz-hide-purchase-options.hide-continue-sub button[data-test-selector=PaidUpgradeButton]{display:none !important}body.ffz-hide-purchase-options.hide-emotes-showcase a[title=Subscribe],body.ffz-hide-purchase-options.hide-emotes-showcase a[title="Subscribe for"]{display:none !important}body.ffz-hide-purchase-options.hide-emotes-showcase button#overlaysub{display:none !important}body.ffz-hide-purchase-options.hide-featured-viewer button.shoutout__button--me{display:none !important}body.ffz-hide-purchase-options.hide-latest-followers[data-active=recent] #recent-panel .btn.buy{display:none !important}body.ffz-hide-purchase-options.hide-my-emotes #root .extension-mode-navigation a[href*="https://twitch.tv/subs/"]{display:none !important}body.ffz-hide-purchase-options.hide-gift-a-sub button[aria-label="Gift a Sub"],body.ffz-hide-purchase-options.hide-gift-a-sub button[data-test-selector=gift-subscribe-button],body.ffz-hide-purchase-options.hide-gift-a-sub button[data-test-selector=take-the-leaderboard-prompt-button]{display:none !important}body.ffz-hide-purchase-options.hide-hype-chat button[aria-label="Hype Chat"]{display:none !important}body.ffz-hide-purchase-options.hide-manage-your-sub button[aria-label="Manage Your Sub: 25% off"],body.ffz-hide-purchase-options.hide-manage-your-sub button[aria-label="Manage Your Sub"]{display:none !important}body.ffz-hide-purchase-options.hide-resubscribe button[aria-label="Resubscribe: 25% off"],body.ffz-hide-purchase-options.hide-resubscribe button[aria-label=Resubscribe]{display:none !important}body.ffz-hide-purchase-options.hide-subscribe button[aria-label="Subscribe: 25% off"],body.ffz-hide-purchase-options.hide-subscribe button[aria-label=Subscribe]{display:none !important}body.ffz-hide-purchase-options.hide-subtember .subtember-gradient{display:none !important}body.ffz-hide-purchase-options.hide-update-sub button[aria-label="Update Subscription"]{display:none !important}`;
+        const styles = `body.ffz-hide-purchase-options .ffz-h-p-hide{display:none !important}body.ffz-hide-purchase-options.hide-bits button[aria-label=Bits],body.ffz-hide-purchase-options.hide-bits button[data-test-selector=get-bits-button],body.ffz-hide-purchase-options.hide-bits button[data-a-target=top-nav-get-bits-button],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-100],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-500],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-1500],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-5000],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-10000],body.ffz-hide-purchase-options.hide-bits button[data-a-target=bits-purchase-button-25000],body.ffz-hide-purchase-options.hide-bits a[data-test-selector=test_selector_buy_bits_button]{display:none !important}body.ffz-hide-purchase-options.hide-manage-your-sub button[data-a-target=spm-complete-purchase-button]{display:none !important}body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 7 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 6 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 5 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 4 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub - 3 Days Remaining"],body.ffz-hide-purchase-options.hide-continue-sub button[aria-label="Continue Sub: 25% off"],body.ffz-hide-purchase-options.hide-continue-sub button[data-test-selector=PaidUpgradeButton]{display:none !important}body.ffz-hide-purchase-options.hide-emotes-showcase a[title=Subscribe],body.ffz-hide-purchase-options.hide-emotes-showcase a[title="Subscribe for"]{display:none !important}body.ffz-hide-purchase-options.hide-emotes-showcase button#overlaysub{display:none !important}body.ffz-hide-purchase-options.hide-featured-viewer button.shoutout__button--me{display:none !important}body.ffz-hide-purchase-options.hide-latest-followers[data-active=recent] #recent-panel .btn.buy{display:none !important}body.ffz-hide-purchase-options.hide-my-emotes #root .extension-mode-navigation a[href*="https://twitch.tv/subs/"]{display:none !important}body.ffz-hide-purchase-options.hide-gift-a-sub button[aria-label="Gift a Sub"],body.ffz-hide-purchase-options.hide-gift-a-sub button[data-test-selector=gift-subscribe-button],body.ffz-hide-purchase-options.hide-gift-a-sub button[data-test-selector=take-the-leaderboard-prompt-button]{display:none !important}body.ffz-hide-purchase-options.hide-hype-chat button[aria-label="Hype Chat"]{display:none !important}body.ffz-hide-purchase-options.hide-manage-your-sub button[aria-label="Manage Your Sub: 25% off"],body.ffz-hide-purchase-options.hide-manage-your-sub button[aria-label="Manage Your Sub"]{display:none !important}body.ffz-hide-purchase-options.hide-resubscribe button[aria-label="Resubscribe: 25% off"],body.ffz-hide-purchase-options.hide-resubscribe button[aria-label=Resubscribe]{display:none !important}body.ffz-hide-purchase-options.hide-subscribe button[aria-label="Subscribe: 25% off"],body.ffz-hide-purchase-options.hide-subscribe button[aria-label=Subscribe],body.ffz-hide-purchase-options.hide-subscribe button[data-a-target=subscribe-button-tier-1000],body.ffz-hide-purchase-options.hide-subscribe button[data-a-target=subscribe-button-tier-2000],body.ffz-hide-purchase-options.hide-subscribe button[data-a-target=subscribe-button-tier-3000]{display:none !important}body.ffz-hide-purchase-options.hide-subtember .subtember-gradient{display:none !important}body.ffz-hide-purchase-options.hide-update-sub button[aria-label="Update Subscription"]{display:none !important}`;
         /* harmony default export */ const scss = (styles);
     
 ;// CONCATENATED MODULE: ./src/features/styles.ts
@@ -544,7 +635,7 @@ const listen = () => {
 
 /* harmony default export */ const turbo = (async () => {
     if (!Constants.InIframe) {
-        await until(() => document.querySelector('nav .ffz-top-nav') !== null);
+        await waitForElement('nav .ffz-top-nav');
     }
     const toggleTurboButton = (value) => {
         let currentNode = null;

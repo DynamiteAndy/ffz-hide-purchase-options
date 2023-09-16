@@ -24,7 +24,7 @@ const listen = (): void => {
   });
 };
 
-export default async (): Promise<void> => {
+export default (): void => {
   applyClass();
   GM_addStyle(styles);
   listen();

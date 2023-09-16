@@ -175,7 +175,7 @@ const addExtensions = (): void => {
   });
 };
 
-export default async (): Promise<void> => {
+export default (): void => {
   if (Constants.IsExtension) {
     return;
   }

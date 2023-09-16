@@ -20,17 +20,13 @@ import {
 import { EmotesShowcase, FeaturedViewer, LatestFollowers, MyEmotes } from '@hpo-feature-extensions';
 
 (async () => {
-  const consoleHeading = Constants.IsExtension
-    ? '[hide-purchase-options (Extension)]'
-    : '[hide-purchase-options (Twitch)]';
-
   await until(() =>
     !Constants.InIframe
       ? unsafeWindow.ffz?.addons?.loaded === true && unsafeWindow.ffz?.on !== undefined
       : document.readyState === 'complete'
   );
 
-  console.debug(`${consoleHeading} - Applying`);
+  console.debug(`${Constants.ConsoleHeading} - Applying`);
 
   allConcurrently(
     'Features',
@@ -71,5 +67,5 @@ import { EmotesShowcase, FeaturedViewer, LatestFollowers, MyEmotes } from '@hpo-
     4
   );
 
-  console.debug(`${consoleHeading} - Finished`);
+  console.debug(`${Constants.ConsoleHeading} - Finished`);
 })();

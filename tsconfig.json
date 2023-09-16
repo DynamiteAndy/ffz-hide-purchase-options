@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "./",
     "outDir": "./dist",
     "baseUrl": "./src",
     "moduleResolution": "node",
@@ -9,6 +10,7 @@
     "allowUnreachableCode": false,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "sourceMap": true,
     "paths": {
       "@hpo-feature-extensions": ["./features/extensions/index"],
       "@hpo-feature-extensions/*": ["./features/extensions/*"],

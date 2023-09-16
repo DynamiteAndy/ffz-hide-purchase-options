@@ -2,7 +2,7 @@ import { Constants } from '@hpo-globals';
 import { Setting } from '@hpo-models';
 import { waitForElements } from '@hpo-utilities';
 
-export default async (): Promise<void> => {
+export default (): void => {
   const toggleGiftASubButton = async (value: boolean) => {
     let currentNode = null;
     const elements = await waitForElements('.support-panel [data-a-target="tw-core-button-label-text"]');

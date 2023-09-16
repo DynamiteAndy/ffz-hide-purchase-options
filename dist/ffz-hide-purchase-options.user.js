@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          FFZ Hide Purchase Options
 // @namespace     dynamite-andy
-// @version       2.2.1
+// @version       3.0.0
 // @iconURL       https://github.com/andrewcartwright1/ffz-hide-purchase-options/blob/main/src/resources/icons/favicon32x32.ico?raw=true
 // @icon64URL     https://github.com/andrewcartwright1/ffz-hide-purchase-options/blob/main/src/resources/icons/favicon64x64.ico?raw=true
 // @updateURL     https://github.com/andrewcartwright1/ffz-hide-purchase-options/raw/main/dist/ffz-hide-purchase-options.user.js
@@ -30,78 +30,29 @@
 var __webpack_exports__ = {};
 
 ;// CONCATENATED MODULE: ./src/globals/constants.ts
-var __setFunctionName = (undefined && undefined.__setFunctionName) || function (f, name, prefix) {
-    if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
-    return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
-};
 var _a, _b, _c, _d;
-const settingPrefix = 'addon.hide_purchase_options';
-class Constants {
-}
-Constants.InIframe = window.location.host !== 'www.twitch.tv';
-Constants.IsExtension = window.location.host.endsWith('ext-twitch.tv');
-Constants.Styles = (_a = class {
-    },
-    __setFunctionName(_a, "Styles"),
-    _a.Root = 'ffz-hide-purchase-options',
-    _a.Base = 'ffz-h-p-hide',
-    _a.GiftASub = 'hide-gift-a-sub',
-    _a.ManageYourSub = 'hide-manage-your-sub',
-    _a.Bits = 'hide-bits',
-    _a.Subscribe = 'hide-subscribe',
-    _a.Resubscribe = 'hide-resubscribe',
-    _a.ContinueSub = 'hide-continue-sub',
-    _a.UpdateSub = 'hide-update-sub',
-    _a.CompletePurchase = 'hide-complete-purchase',
-    _a.Subtember = 'hide-subtember',
-    _a.Turbo = 'hide-turbo',
-    _a.HypeChat = 'hide-hype-chat',
-    _a.Charity = 'hide-charity',
-    _a.Extensions = (_b = class {
-        },
-        __setFunctionName(_b, "Extensions"),
-        _b.EmotesShowcase = 'hide-emotes-showcase',
-        _b.LatestFollowers = 'hide-latest-followers',
-        _b.MyEmotes = 'hide-my-emotes',
-        _b.FeaturedViewer = 'hide-featured-viewer',
-        _b),
-    _a);
-Constants.Settings = (_c = class {
-    },
-    __setFunctionName(_c, "Settings"),
-    _c.prefix = `${settingPrefix}.support-panel`,
-    _c.GiftASub = `${_c.prefix}.gift_a_sub`,
-    _c.ManageYourSub = `${_c.prefix}.go_above_and_beyond`,
-    _c.Bits = `${_c.prefix}.bits`,
-    _c.ContinueSub = `${_c.prefix}.continue_sub`,
-    _c.UpdateSub = `${_c.prefix}.update_sub`,
-    _c.Subscribe = `${_c.prefix}.subscribe`,
-    _c.Resubscribe = `${_c.prefix}.resubscribe`,
-    _c.CompletePurchase = `${_c.prefix}.complete_purchase`,
-    _c.Subtember = `${_c.prefix}.subtember`,
-    _c.Turbo = `${_c.prefix}.turbo`,
-    _c.HypeChat = `${_c.prefix}.hype_chat`,
-    _c.Charity = `${_c.prefix}.charity`,
-    _c.Extensions = (_d = class {
-        },
-        __setFunctionName(_d, "Extensions"),
-        _d.prefix = `${settingPrefix}.support-panel.extensions`,
-        _d.Text = `${_d.prefix}.text`,
-        _d.EmotesShowcase = `${_d.prefix}.emotes_showcase`,
-        _d.LatestFollowers = `${_d.prefix}.latest_followers`,
-        _d.MyEmotes = `${_d.prefix}.my_emotes`,
-        _d.FeaturedViewer = `${_d.prefix}.featured_viewer`,
-        _d),
-    _c);
+const settingPrefix = "addon.hide_purchase_options";
+const _Constants = class _Constants {
+};
+_Constants.InIframe = window.location.host !== "www.twitch.tv";
+_Constants.IsExtension = window.location.host.endsWith("ext-twitch.tv");
+_Constants.ConsoleHeading = _Constants.IsExtension ? "[hide-purchase-options (Extension)]" : "[hide-purchase-options (Twitch)]";
+_Constants.Styles = (_b = class {
+}, _b.Root = "ffz-hide-purchase-options", _b.Base = "ffz-h-p-hide", _b.GiftASub = "hide-gift-a-sub", _b.ManageYourSub = "hide-manage-your-sub", _b.Bits = "hide-bits", _b.Subscribe = "hide-subscribe", _b.Resubscribe = "hide-resubscribe", _b.ContinueSub = "hide-continue-sub", _b.UpdateSub = "hide-update-sub", _b.CompletePurchase = "hide-complete-purchase", _b.Subtember = "hide-subtember", _b.Turbo = "hide-turbo", _b.HypeChat = "hide-hype-chat", _b.Charity = "hide-charity", _b.Extensions = (_a = class {
+}, _a.EmotesShowcase = "hide-emotes-showcase", _a.LatestFollowers = "hide-latest-followers", _a.MyEmotes = "hide-my-emotes", _a.FeaturedViewer = "hide-featured-viewer", _a), _b);
+_Constants.Settings = (_d = class {
+}, _d.prefix = `${settingPrefix}.support-panel`, _d.GiftASub = `${_d.prefix}.gift_a_sub`, _d.ManageYourSub = `${_d.prefix}.go_above_and_beyond`, _d.Bits = `${_d.prefix}.bits`, _d.ContinueSub = `${_d.prefix}.continue_sub`, _d.UpdateSub = `${_d.prefix}.update_sub`, _d.Subscribe = `${_d.prefix}.subscribe`, _d.Resubscribe = `${_d.prefix}.resubscribe`, _d.CompletePurchase = `${_d.prefix}.complete_purchase`, _d.Subtember = `${_d.prefix}.subtember`, _d.Turbo = `${_d.prefix}.turbo`, _d.HypeChat = `${_d.prefix}.hype_chat`, _d.Charity = `${_d.prefix}.charity`, _d.Extensions = (_c = class {
+}, _c.prefix = `${settingPrefix}.support-panel.extensions`, _c.Text = `${_c.prefix}.text`, _c.EmotesShowcase = `${_c.prefix}.emotes_showcase`, _c.LatestFollowers = `${_c.prefix}.latest_followers`, _c.MyEmotes = `${_c.prefix}.my_emotes`, _c.FeaturedViewer = `${_c.prefix}.featured_viewer`, _c), _d);
+let Constants = _Constants;
 
 ;// CONCATENATED MODULE: ./src/globals/config.ts
 /* harmony default export */ const config = ({
-    get: (setting) => {
-        return GM_getValue(setting, true);
-    },
-    set: (setting, value) => {
-        GM_setValue(setting, value);
-    }
+  get: (setting) => {
+    return GM_getValue(setting, true);
+  },
+  set: (setting, value) => {
+    GM_setValue(setting, value);
+  }
 });
 
 ;// CONCATENATED MODULE: ./src/globals/index.ts
@@ -109,64 +60,135 @@ Constants.Settings = (_c = class {
 
 
 ;// CONCATENATED MODULE: ./src/helpers/wait.ts
-const until = async (f, timeoutMs = 10000) => {
-    return new Promise((resolve) => {
-        const timeWas = new Date();
-        const wait = setInterval(() => {
-            if (f()) {
-                clearInterval(wait);
-                resolve(true);
-            }
-            else if (+new Date() - +timeWas > timeoutMs) {
-                clearInterval(wait);
-                resolve(false);
-            }
-        }, 20);
-    });
+const until = async (f, timeoutMs = 1e4) => {
+  return new Promise((resolve) => {
+    const timeWas = /* @__PURE__ */ new Date();
+    const wait = setInterval(() => {
+      if (f()) {
+        clearInterval(wait);
+        resolve(true);
+      } else if (+/* @__PURE__ */ new Date() - +timeWas > timeoutMs) {
+        clearInterval(wait);
+        resolve(false);
+      }
+    }, 20);
+  });
 };
 
 ;// CONCATENATED MODULE: ./src/utilities/promise-util.ts
-const promisify = (fn) => () => new Promise((resolve) => fn((callbackArgs) => resolve(callbackArgs)));
-const allConcurrently = async (name, arr, max = 3) => {
-    if (arr.length === 0) {
-        return Promise.resolve([]);
-    }
-    let index = 0;
-    const results = [];
-    const execThread = async () => {
-        while (index < arr.length) {
-            const curIndex = index++;
-            const task = arr[curIndex].task.constructor.name === 'Function' ? promisify(arr[curIndex].task) : arr[curIndex].task;
-            results[curIndex] = await task();
-        }
-    };
-    const threads = [];
-    for (let thread = 0; thread < max; thread++) {
-        threads.push(execThread());
-    }
-    await Promise.all(threads);
-    return results;
+
+const promisify = (fn) => async (...args) => fn(args);
+const needsPromisifying = (fn) => {
+  if (fn.constructor.name === "AsyncFunction") {
+    return false;
+  }
+  return true;
 };
+const allConcurrently = async (name, arr, max = 3) => {
+  if (arr.length === 0) {
+    return Promise.resolve([]);
+  }
+  let index = 0;
+  const results = [];
+  const execThread = async () => {
+    while (index < arr.length) {
+      const curIndex = index++;
+      const task = needsPromisifying(arr[curIndex].task) ? promisify(arr[curIndex].task) : arr[curIndex].task;
+      console.debug(
+        `${Constants.ConsoleHeading} - ${arr[curIndex].name}`,
+        `Promisified: ${needsPromisifying(arr[curIndex].task)}`
+      );
+      results[curIndex] = await task();
+      console.debug(`${Constants.ConsoleHeading} - ${arr[curIndex].name}`, results[curIndex]);
+    }
+  };
+  const threads = [];
+  for (let thread = 0; thread < max; thread++) {
+    threads.push(execThread());
+  }
+  await Promise.all(threads);
+  return results;
+};
+
+;// CONCATENATED MODULE: ./src/utilities/html-element-util.ts
+const waitForElement = (selector, element = document.documentElement, timeoutMS = 1e4) => new Promise((resolve) => {
+  if (element === null) {
+    return null;
+  }
+  if (element === document.documentElement) {
+    element = document.documentElement;
+  }
+  if (element.querySelector(selector)) {
+    return resolve(element.querySelector(selector));
+  }
+  let observer;
+  const timeout = setTimeout(() => {
+    observer.disconnect();
+    resolve(null);
+  }, timeoutMS);
+  observer = new MutationObserver(() => {
+    if (element.querySelector(selector)) {
+      observer.disconnect();
+      clearTimeout(timeout);
+      resolve(element.querySelector(selector));
+    }
+  });
+  observer.observe(element, {
+    childList: true,
+    subtree: true
+  });
+});
+const waitForElements = (selector, element = document.documentElement, timeoutMS = 1e4) => new Promise((resolve) => {
+  if (element === null) {
+    return [];
+  }
+  if (element === document.documentElement) {
+    element = document.documentElement;
+  }
+  if (element.querySelector(selector)) {
+    return resolve([...element.querySelectorAll(selector)]);
+  }
+  let observer;
+  const timeout = setTimeout(() => {
+    observer.disconnect();
+    resolve([]);
+  }, timeoutMS);
+  observer = new MutationObserver(() => {
+    if (element.querySelector(selector)) {
+      observer.disconnect();
+      clearTimeout(timeout);
+      resolve([...element.querySelectorAll(selector)]);
+    }
+  });
+  observer.observe(element, {
+    childList: true,
+    subtree: true
+  });
+});
+
+;// CONCATENATED MODULE: ./src/utilities/index.ts
+
+
 
 ;// CONCATENATED MODULE: ./src/components/pub-sub.ts
 function PubSub() {
-    const handlers = {};
-    return {
-        publish: (event, msg) => {
-            (handlers[event] ?? []).forEach((h) => h(msg));
-        },
-        subscribe: (event, callback) => {
-            const list = handlers[event] ?? [];
-            list.push(callback);
-            handlers[event] = list;
-            return callback;
-        },
-        unsubscribe: (event, callback) => {
-            let list = handlers[event] ?? [];
-            list = list.filter((h) => h !== callback);
-            handlers[event] = list;
-        }
-    };
+  const handlers = {};
+  return {
+    publish: (event, msg) => {
+      (handlers[event] ?? []).forEach((h) => h(msg));
+    },
+    subscribe: (event, callback) => {
+      const list = handlers[event] ?? [];
+      list.push(callback);
+      handlers[event] = list;
+      return callback;
+    },
+    unsubscribe: (event, callback) => {
+      let list = handlers[event] ?? [];
+      list = list.filter((h) => h !== callback);
+      handlers[event] = list;
+    }
+  };
 }
 /* harmony default export */ const pub_sub = (PubSub());
 
@@ -177,42 +199,40 @@ function PubSub() {
 
 
 class Setting {
-    constructor(settingId, styleClass, tampermonkeySetting = false, settingFn = null) {
-        this.applyClass = () => {
-            const value = config.get(this.settingId);
-            this.setClass(value, !value, false);
-        };
-        this.settingId = settingId;
-        this.styleClass = styleClass;
-        this.tampermonkeySetting = tampermonkeySetting;
-        this.settingFunction = settingFn;
+  constructor(settingId, styleClass, tampermonkeySetting = false, settingFn = null) {
+    this.applyClass = () => {
+      const value = config.get(this.settingId);
+      this.setClass(value, !value, false);
+    };
+    this.settingId = settingId;
+    this.styleClass = styleClass;
+    this.tampermonkeySetting = tampermonkeySetting;
+    this.settingFunction = settingFn;
+  }
+  listen() {
+    pub_sub.subscribe("styles:reapply", this.applyClass);
+    if (Constants.InIframe && this.tampermonkeySetting) {
+      GM_addValueChangeListener(this.settingId, (_key, oldValue, newValue) => this.setClass(newValue, oldValue, false));
+    } else if (!Constants.InIframe) {
+      unsafeWindow.ffz.addons.settings.getChanges(this.settingId, this.setClass.bind(this));
+      unsafeWindow.ffz.on("chat:room-add", this.applyClass);
+      unsafeWindow.ffz.on("chat:room-remove", this.applyClass);
     }
-    listen() {
-        pub_sub.subscribe('styles:reapply', this.applyClass);
-        if (Constants.InIframe && this.tampermonkeySetting) {
-            GM_addValueChangeListener(this.settingId, (_key, oldValue, newValue) => this.setClass(newValue, oldValue, false));
-        }
-        else if (!Constants.InIframe) {
-            unsafeWindow.ffz.addons.settings.getChanges(this.settingId, this.setClass.bind(this));
-            unsafeWindow.ffz.on('chat:room-add', this.applyClass);
-            unsafeWindow.ffz.on('chat:room-remove', this.applyClass);
-        }
-        this.applyClass();
+    this.applyClass();
+  }
+  setClass(newValue, _oldValue, updateGMValue = true) {
+    if (this.tampermonkeySetting && updateGMValue) {
+      config.set(this.settingId, newValue);
     }
-    setClass(newValue, _oldValue, updateGMValue = true) {
-        if (this.tampermonkeySetting && updateGMValue) {
-            config.set(this.settingId, newValue);
-        }
-        if (newValue) {
-            document.body.classList.add(this.styleClass);
-        }
-        else {
-            document.body.classList.remove(this.styleClass);
-        }
-        if (this.settingFunction) {
-            this.settingFunction(newValue);
-        }
+    if (newValue) {
+      document.body.classList.add(this.styleClass);
+    } else {
+      document.body.classList.remove(this.styleClass);
     }
+    if (this.settingFunction) {
+      this.settingFunction(newValue);
+    }
+  }
 }
 
 ;// CONCATENATED MODULE: ./src/models/index.ts
@@ -222,8 +242,8 @@ class Setting {
 
 
 /* harmony default export */ const bits = (() => {
-    const setting = new Setting(Constants.Settings.Bits, Constants.Styles.Bits);
-    setting.listen();
+  const setting = new Setting(Constants.Settings.Bits, Constants.Styles.Bits);
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/charity.ts
@@ -231,149 +251,76 @@ class Setting {
 
 
 /* harmony default export */ const charity = (async () => {
-    if (!Constants.InIframe) {
-        await until(() => unsafeWindow.ffz?.site?.elemental._observer === null);
+  if (!Constants.InIframe) {
+    await until(() => unsafeWindow.ffz?.site?.elemental._observer === null);
+  }
+  const toggleCharityButton = (value) => {
+    let currentNode = null;
+    for (const element of [
+      ...document.querySelectorAll('[data-target="channel-header-right"] [data-a-target="tw-core-button-label-text"]')
+    ]) {
+      if (element.textContent.trim() === "Donate to Charity") {
+        currentNode = element;
+        break;
+      }
     }
-    const toggleCharityButton = (value) => {
-        let currentNode = null;
-        for (const element of [
-            ...document.querySelectorAll('[data-target="channel-header-right"] [data-a-target="tw-core-button-label-text"]')
-        ]) {
-            if (element.textContent.trim() === 'Donate to Charity') {
-                currentNode = element;
-                break;
-            }
-        }
-        const charityButton = currentNode?.closest('button')?.parentElement;
-        const charityHeading = document.querySelector('[data-test-selector="chat-room-component-layout"] [aria-label="Charity details"]');
-        if (value) {
-            charityButton?.classList?.add(Constants.Styles.Base);
-            charityHeading?.classList?.add(Constants.Styles.Base);
-            charityHeading?.previousElementSibling?.classList?.add(Constants.Styles.Base);
-        }
-        else {
-            charityButton?.classList?.remove(Constants.Styles.Base);
-            charityHeading?.classList?.remove(Constants.Styles.Base);
-            charityHeading?.previousElementSibling?.classList?.remove(Constants.Styles.Base);
-        }
-    };
-    const setting = new Setting(Constants.Settings.Charity, Constants.Styles.Charity, false, toggleCharityButton);
-    setting.listen();
+    const charityButton = currentNode?.closest("button")?.parentElement;
+    const charityHeading = document.querySelector(
+      '[data-test-selector="chat-room-component-layout"] [aria-label="Charity details"]'
+    );
+    if (value) {
+      charityButton?.classList?.add(Constants.Styles.Base);
+      charityHeading?.classList?.add(Constants.Styles.Base);
+      charityHeading?.previousElementSibling?.classList?.add(Constants.Styles.Base);
+    } else {
+      charityButton?.classList?.remove(Constants.Styles.Base);
+      charityHeading?.classList?.remove(Constants.Styles.Base);
+      charityHeading?.previousElementSibling?.classList?.remove(Constants.Styles.Base);
+    }
+  };
+  const setting = new Setting(Constants.Settings.Charity, Constants.Styles.Charity, false, toggleCharityButton);
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/complete-purchase.ts
 
 
-/* harmony default export */ const complete_purchase = (async () => {
-    const setting = new Setting(Constants.Settings.CompletePurchase, Constants.Styles.CompletePurchase);
-    setting.listen();
+/* harmony default export */ const complete_purchase = (() => {
+  const setting = new Setting(Constants.Settings.CompletePurchase, Constants.Styles.CompletePurchase);
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/continue-sub.ts
 
 
-/* harmony default export */ const continue_sub = (async () => {
-    const setting = new Setting(Constants.Settings.ContinueSub, Constants.Styles.ContinueSub);
-    setting.listen();
+/* harmony default export */ const continue_sub = (() => {
+  const setting = new Setting(Constants.Settings.ContinueSub, Constants.Styles.ContinueSub);
+  setting.listen();
 });
-
-;// CONCATENATED MODULE: ./src/utilities/html-element-util.ts
-const waitForElement = (selector, element = document.documentElement, timeoutMS = 10000) => new Promise((resolve) => {
-    if (element === null) {
-        return null;
-    }
-    if (element === document.documentElement) {
-        element = document.documentElement;
-    }
-    if (element.querySelector(selector)) {
-        return resolve(element.querySelector(selector));
-    }
-    let observer;
-    const timeout = setTimeout(() => {
-        observer.disconnect();
-        resolve(null);
-    }, timeoutMS);
-    observer = new MutationObserver(() => {
-        if (element.querySelector(selector)) {
-            observer.disconnect();
-            clearTimeout(timeout);
-            resolve(element.querySelector(selector));
-        }
-    });
-    observer.observe(element, {
-        childList: true,
-        subtree: true
-    });
-});
-const waitForElements = (selector, element = document.documentElement, timeoutMS = 10000) => new Promise((resolve) => {
-    if (element === null) {
-        return [];
-    }
-    if (element === document.documentElement) {
-        element = document.documentElement;
-    }
-    if (element.querySelector(selector)) {
-        return resolve([...element.querySelectorAll(selector)]);
-    }
-    let observer;
-    const timeout = setTimeout(() => {
-        observer.disconnect();
-        resolve([]);
-    }, timeoutMS);
-    observer = new MutationObserver(() => {
-        if (element.querySelector(selector)) {
-            observer.disconnect();
-            clearTimeout(timeout);
-            resolve([...element.querySelectorAll(selector)]);
-        }
-    });
-    observer.observe(element, {
-        childList: true,
-        subtree: true
-    });
-});
-const getElementCoordinates = (element) => {
-    const box = element.getBoundingClientRect();
-    const body = document.body;
-    const docEl = document.documentElement;
-    const scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
-    const scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
-    const clientTop = docEl.clientTop || body.clientTop || 0;
-    const clientLeft = docEl.clientLeft || body.clientLeft || 0;
-    const top = box.top + scrollTop - clientTop;
-    const left = box.left + scrollLeft - clientLeft;
-    return { top: Math.round(top), left: Math.round(left) };
-};
-const removeAllChildren = (element) => {
-    while (element.firstChild) {
-        element.removeChild(element.lastChild);
-    }
-};
 
 ;// CONCATENATED MODULE: ./src/features/gift.ts
 
 
 
-/* harmony default export */ const gift = (async () => {
-    const toggleGiftASubButton = async (value) => {
-        let currentNode = null;
-        const elements = await waitForElements('.support-panel [data-a-target="tw-core-button-label-text"]');
-        for (const element of elements) {
-            if (element.textContent.trim() === 'Gift a Sub') {
-                currentNode = element;
-                break;
-            }
-        }
-        const giftASubButton = currentNode?.closest('button');
-        if (value) {
-            giftASubButton?.classList?.add(Constants.Styles.Base);
-        }
-        else {
-            giftASubButton?.classList?.remove(Constants.Styles.Base);
-        }
-    };
-    const setting = new Setting(Constants.Settings.GiftASub, Constants.Styles.GiftASub, false, toggleGiftASubButton);
-    setting.listen();
+/* harmony default export */ const gift = (() => {
+  const toggleGiftASubButton = async (value) => {
+    let currentNode = null;
+    const elements = await waitForElements('.support-panel [data-a-target="tw-core-button-label-text"]');
+    for (const element of elements) {
+      if (element.textContent.trim() === "Gift a Sub") {
+        currentNode = element;
+        break;
+      }
+    }
+    const giftASubButton = currentNode?.closest("button");
+    if (value) {
+      giftASubButton?.classList?.add(Constants.Styles.Base);
+    } else {
+      giftASubButton?.classList?.remove(Constants.Styles.Base);
+    }
+  };
+  const setting = new Setting(Constants.Settings.GiftASub, Constants.Styles.GiftASub, false, toggleGiftASubButton);
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/hype-chat.ts
@@ -381,204 +328,203 @@ const removeAllChildren = (element) => {
 
 
 /* harmony default export */ const hype_chat = (async () => {
-    if (!Constants.InIframe) {
-        await until(() => unsafeWindow.ffz?.site?.elemental._observer === null);
+  if (!Constants.InIframe) {
+    await until(() => unsafeWindow.ffz?.site?.elemental._observer === null);
+  }
+  const togglePostHypeChatButton = (value) => {
+    const button = document.querySelector('button[aria-label="Post a Hype Chat"]');
+    if (value) {
+      button?.parentElement?.parentElement?.classList[value ? "add" : "remove"](Constants.Styles.Base);
+    } else {
+      button?.parentElement?.parentElement?.classList.remove(Constants.Styles.Base);
     }
-    const togglePostHypeChatButton = (value) => {
-        const button = document.querySelector('button[aria-label="Post a Hype Chat"]');
-        if (value) {
-            button?.parentElement?.parentElement?.classList[value ? 'add' : 'remove'](Constants.Styles.Base);
-        }
-        else {
-            button?.parentElement?.parentElement?.classList.remove(Constants.Styles.Base);
-        }
-    };
-    const setting = new Setting(Constants.Settings.HypeChat, Constants.Styles.HypeChat, false, togglePostHypeChatButton);
-    setting.listen();
+  };
+  const setting = new Setting(Constants.Settings.HypeChat, Constants.Styles.HypeChat, false, togglePostHypeChatButton);
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/manage-your-sub.ts
 
 
-/* harmony default export */ const manage_your_sub = (async () => {
-    const setting = new Setting(Constants.Settings.ManageYourSub, Constants.Styles.ManageYourSub);
-    setting.listen();
+/* harmony default export */ const manage_your_sub = (() => {
+  const setting = new Setting(Constants.Settings.ManageYourSub, Constants.Styles.ManageYourSub);
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/resubscribe.ts
 
 
-/* harmony default export */ const resubscribe = (async () => {
-    const setting = new Setting(Constants.Settings.Resubscribe, Constants.Styles.Resubscribe);
-    setting.listen();
+/* harmony default export */ const resubscribe = (() => {
+  const setting = new Setting(Constants.Settings.Resubscribe, Constants.Styles.Resubscribe);
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/settings-menu.ts
 
-const menuPath = 'Add-Ons > Hide Purchase Options';
+const menuPath = "Add-Ons > Hide Purchase Options";
 const defaultPath = `${menuPath} >> Purchase Options`;
 const extensionsPath = `${menuPath} >> Extensions`;
 const addAddonUIOption = () => {
-    unsafeWindow.ffz.addons.settings.addUI('add_ons.hide_purchase_options', {
-        path: defaultPath,
-        component: 'container'
-    });
+  unsafeWindow.ffz.addons.settings.addUI("add_ons.hide_purchase_options", {
+    path: defaultPath,
+    component: "container"
+  });
 };
 const addOptions = () => {
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.Bits, {
-        default: true,
-        ui: {
-            path: defaultPath,
-            title: 'Hide "Get Bits"',
-            description: 'Hides the "Get Bits" payment option',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.ContinueSub, {
-        default: true,
-        ui: {
-            path: defaultPath,
-            title: 'Hide "Continue Sub"',
-            description: 'Hides the "Continue Sub" payment option',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.CompletePurchase, {
-        default: true,
-        ui: {
-            path: defaultPath,
-            title: 'Hide "Complete Purchase"',
-            description: 'Hides the "Complete Purchase" button',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.Charity, {
-        default: true,
-        ui: {
-            path: defaultPath,
-            title: 'Hide "Donate To Charity"',
-            description: 'Hides the "Donate To Charity" payment option',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.GiftASub, {
-        default: true,
-        ui: {
-            path: defaultPath,
-            title: 'Hide "Gift a Sub"',
-            description: 'Hides the "Gift a Sub" payment option',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.HypeChat, {
-        default: true,
-        ui: {
-            path: defaultPath,
-            title: 'Hide "Hype Chat"',
-            description: 'Hides the "Hype Chat" payment option',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.ManageYourSub, {
-        default: true,
-        ui: {
-            path: defaultPath,
-            title: 'Hide "Manage Your Sub"',
-            description: 'Hides the "Manage Your Sub" payment option',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.Resubscribe, {
-        default: true,
-        ui: {
-            path: defaultPath,
-            title: 'Hide "Resubscribe"',
-            description: 'Hides the "Resubscribe" payment option',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.Subscribe, {
-        default: true,
-        ui: {
-            path: defaultPath,
-            title: 'Hide "Subscribe"',
-            description: 'Hides the "Subscribe" payment option',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.Subtember, {
-        default: true,
-        ui: {
-            path: defaultPath,
-            title: 'Hide "Subtember"',
-            description: 'Hides the "Subtember" advert',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.Turbo, {
-        default: true,
-        ui: {
-            path: defaultPath,
-            title: 'Hide "Turbo"',
-            description: 'Hides the "Turbo" payment option',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.UpdateSub, {
-        default: true,
-        ui: {
-            path: defaultPath,
-            title: 'Hide "Update Sub"',
-            description: 'Hides the "Update Subscription" payment option',
-            component: 'setting-check-box'
-        }
-    });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.Bits, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Get Bits"',
+      description: 'Hides the "Get Bits" payment option',
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.ContinueSub, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Continue Sub"',
+      description: 'Hides the "Continue Sub" payment option',
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.CompletePurchase, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Complete Purchase"',
+      description: 'Hides the "Complete Purchase" button',
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.Charity, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Donate To Charity"',
+      description: 'Hides the "Donate To Charity" payment option',
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.GiftASub, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Gift a Sub"',
+      description: 'Hides the "Gift a Sub" payment option',
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.HypeChat, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Hype Chat"',
+      description: 'Hides the "Hype Chat" payment option',
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.ManageYourSub, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Manage Your Sub"',
+      description: 'Hides the "Manage Your Sub" payment option',
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.Resubscribe, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Resubscribe"',
+      description: 'Hides the "Resubscribe" payment option',
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.Subscribe, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Subscribe"',
+      description: 'Hides the "Subscribe" payment option',
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.Subtember, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Subtember"',
+      description: 'Hides the "Subtember" advert',
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.Turbo, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Turbo"',
+      description: 'Hides the "Turbo" payment option',
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.UpdateSub, {
+    default: true,
+    ui: {
+      path: defaultPath,
+      title: 'Hide "Update Sub"',
+      description: 'Hides the "Update Subscription" payment option',
+      component: "setting-check-box"
+    }
+  });
 };
 const addExtensions = () => {
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.Extensions.EmotesShowcase, {
-        default: true,
-        ui: {
-            path: extensionsPath,
-            title: 'Hide "Emotes Showcase"',
-            description: 'Hides payment options on the Emotes Showcase extension',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.Extensions.FeaturedViewer, {
-        default: true,
-        ui: {
-            path: extensionsPath,
-            title: 'Hide "Featured Viewer"',
-            description: 'Hides payment options on the Featured Viewer extension',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.Extensions.LatestFollowers, {
-        default: true,
-        ui: {
-            path: extensionsPath,
-            title: 'Hide "Latest Followers"',
-            description: 'Hides payment options on the Latest Followers extension',
-            component: 'setting-check-box'
-        }
-    });
-    unsafeWindow.ffz.addons.settings.add(Constants.Settings.Extensions.MyEmotes, {
-        default: true,
-        ui: {
-            path: extensionsPath,
-            title: 'Hide "MyEmotes',
-            description: 'Hides payment options on the MyEmotes extension',
-            component: 'setting-check-box'
-        }
-    });
-};
-/* harmony default export */ const settings_menu = (async () => {
-    if (Constants.IsExtension) {
-        return;
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.Extensions.EmotesShowcase, {
+    default: true,
+    ui: {
+      path: extensionsPath,
+      title: 'Hide "Emotes Showcase"',
+      description: "Hides payment options on the Emotes Showcase extension",
+      component: "setting-check-box"
     }
-    addAddonUIOption();
-    addOptions();
-    addExtensions();
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.Extensions.FeaturedViewer, {
+    default: true,
+    ui: {
+      path: extensionsPath,
+      title: 'Hide "Featured Viewer"',
+      description: "Hides payment options on the Featured Viewer extension",
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.Extensions.LatestFollowers, {
+    default: true,
+    ui: {
+      path: extensionsPath,
+      title: 'Hide "Latest Followers"',
+      description: "Hides payment options on the Latest Followers extension",
+      component: "setting-check-box"
+    }
+  });
+  unsafeWindow.ffz.addons.settings.add(Constants.Settings.Extensions.MyEmotes, {
+    default: true,
+    ui: {
+      path: extensionsPath,
+      title: 'Hide "MyEmotes',
+      description: "Hides payment options on the MyEmotes extension",
+      component: "setting-check-box"
+    }
+  });
+};
+/* harmony default export */ const settings_menu = (() => {
+  if (Constants.IsExtension) {
+    return;
+  }
+  addAddonUIOption();
+  addOptions();
+  addExtensions();
 });
 
 ;// CONCATENATED MODULE: ./src/scss/index.scss
@@ -592,41 +538,41 @@ const addExtensions = () => {
 
 const applyClass = () => document.body.classList.add(Constants.Styles.Root);
 const listen = () => {
-    pub_sub.subscribe('styles:reapply', applyClass);
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                const targetElement = mutation.target;
-                if (!targetElement.classList.contains('ffz-hide-purchase-options')) {
-                    pub_sub.publish('styles:reapply');
-                }
-            }
-        });
+  pub_sub.subscribe("styles:reapply", applyClass);
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === "attributes" && mutation.attributeName === "class") {
+        const targetElement = mutation.target;
+        if (!targetElement.classList.contains("ffz-hide-purchase-options")) {
+          pub_sub.publish("styles:reapply");
+        }
+      }
     });
-    observer.observe(document.body, {
-        attributes: true
-    });
+  });
+  observer.observe(document.body, {
+    attributes: true
+  });
 };
-/* harmony default export */ const features_styles = (async () => {
-    applyClass();
-    GM_addStyle(scss);
-    listen();
+/* harmony default export */ const features_styles = (() => {
+  applyClass();
+  GM_addStyle(scss);
+  listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/subscribe.ts
 
 
-/* harmony default export */ const subscribe = (async () => {
-    const setting = new Setting(Constants.Settings.Subscribe, Constants.Styles.Subscribe);
-    setting.listen();
+/* harmony default export */ const subscribe = (() => {
+  const setting = new Setting(Constants.Settings.Subscribe, Constants.Styles.Subscribe);
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/subtember.ts
 
 
-/* harmony default export */ const subtember = (async () => {
-    const setting = new Setting(Constants.Settings.Subtember, Constants.Styles.Subtember);
-    setting.listen();
+/* harmony default export */ const subtember = (() => {
+  const setting = new Setting(Constants.Settings.Subtember, Constants.Styles.Subtember);
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/turbo.ts
@@ -634,42 +580,41 @@ const listen = () => {
 
 
 /* harmony default export */ const turbo = (async () => {
-    if (!Constants.InIframe) {
-        await waitForElement('nav .ffz-top-nav');
+  if (!Constants.InIframe) {
+    await waitForElement("nav .ffz-top-nav");
+  }
+  const toggleTurboButton = (value) => {
+    let currentNode = null;
+    for (const element of [
+      ...document.querySelectorAll('[data-a-target="top-nav-container"] [data-a-target="tw-core-button-label-text"]')
+    ]) {
+      if (element.textContent.trim() === "Get Ad-Free") {
+        currentNode = element;
+        break;
+      }
     }
-    const toggleTurboButton = (value) => {
-        let currentNode = null;
-        for (const element of [
-            ...document.querySelectorAll('[data-a-target="top-nav-container"] [data-a-target="tw-core-button-label-text"]')
-        ]) {
-            if (element.textContent.trim() === 'Get Ad-Free') {
-                currentNode = element;
-                break;
-            }
+    while (currentNode) {
+      if (currentNode.nextElementSibling?.classList?.contains("ffz-top-nav")) {
+        if (value) {
+          currentNode.classList?.add(Constants.Styles.Base);
+        } else {
+          currentNode.classList?.remove(Constants.Styles.Base);
         }
-        while (currentNode) {
-            if (currentNode.nextElementSibling?.classList?.contains('ffz-top-nav')) {
-                if (value) {
-                    currentNode.classList?.add(Constants.Styles.Base);
-                }
-                else {
-                    currentNode.classList?.remove(Constants.Styles.Base);
-                }
-                break;
-            }
-            currentNode = currentNode.parentElement;
-        }
-    };
-    const setting = new Setting(Constants.Settings.Turbo, Constants.Styles.Turbo, false, toggleTurboButton);
-    setting.listen();
+        break;
+      }
+      currentNode = currentNode.parentElement;
+    }
+  };
+  const setting = new Setting(Constants.Settings.Turbo, Constants.Styles.Turbo, false, toggleTurboButton);
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/update-sub.ts
 
 
-/* harmony default export */ const update_sub = (async () => {
-    const setting = new Setting(Constants.Settings.UpdateSub, Constants.Styles.UpdateSub);
-    setting.listen();
+/* harmony default export */ const update_sub = (() => {
+  const setting = new Setting(Constants.Settings.UpdateSub, Constants.Styles.UpdateSub);
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/index.ts
@@ -691,33 +636,45 @@ const listen = () => {
 ;// CONCATENATED MODULE: ./src/features/extensions/emotes-showcase.ts
 
 
-/* harmony default export */ const emotes_showcase = (async () => {
-    const setting = new Setting(Constants.Settings.Extensions.EmotesShowcase, Constants.Styles.Extensions.EmotesShowcase, true);
-    setting.listen();
+/* harmony default export */ const emotes_showcase = (() => {
+  const setting = new Setting(
+    Constants.Settings.Extensions.EmotesShowcase,
+    Constants.Styles.Extensions.EmotesShowcase,
+    true
+  );
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/extensions/featured-viewer.ts
 
 
-/* harmony default export */ const featured_viewer = (async () => {
-    const setting = new Setting(Constants.Settings.Extensions.FeaturedViewer, Constants.Styles.Extensions.FeaturedViewer, true);
-    setting.listen();
+/* harmony default export */ const featured_viewer = (() => {
+  const setting = new Setting(
+    Constants.Settings.Extensions.FeaturedViewer,
+    Constants.Styles.Extensions.FeaturedViewer,
+    true
+  );
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/extensions/latest-followers.ts
 
 
-/* harmony default export */ const latest_followers = (async () => {
-    const setting = new Setting(Constants.Settings.Extensions.LatestFollowers, Constants.Styles.Extensions.LatestFollowers, true);
-    setting.listen();
+/* harmony default export */ const latest_followers = (() => {
+  const setting = new Setting(
+    Constants.Settings.Extensions.LatestFollowers,
+    Constants.Styles.Extensions.LatestFollowers,
+    true
+  );
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/extensions/my-emotes.ts
 
 
-/* harmony default export */ const my_emotes = (async () => {
-    const setting = new Setting(Constants.Settings.Extensions.MyEmotes, Constants.Styles.Extensions.MyEmotes, true);
-    setting.listen();
+/* harmony default export */ const my_emotes = (() => {
+  const setting = new Setting(Constants.Settings.Extensions.MyEmotes, Constants.Styles.Extensions.MyEmotes, true);
+  setting.listen();
 });
 
 ;// CONCATENATED MODULE: ./src/features/extensions/index.ts
@@ -733,38 +690,47 @@ const listen = () => {
 
 
 (async () => {
-    const consoleHeading = Constants.IsExtension
-        ? '[hide-purchase-options (Extension)]'
-        : '[hide-purchase-options (Twitch)]';
-    await until(() => !Constants.InIframe
-        ? unsafeWindow.ffz?.addons?.loaded === true && unsafeWindow.ffz?.on !== undefined
-        : document.readyState === 'complete');
-    console.debug(`${consoleHeading} - Applying`);
-    allConcurrently('Features', [
-        { name: 'feature:settings-menu', task: settings_menu },
-        { name: 'feature:styles', task: features_styles },
-        { name: 'feature:bits', task: bits },
-        { name: 'feature:complete-purchase', task: complete_purchase },
-        { name: 'feature:continue-sub', task: continue_sub },
-        { name: 'feature:gift', task: gift },
-        { name: 'feature:manage-your-sub', task: manage_your_sub },
-        { name: 'feature:resubscribe', task: resubscribe },
-        { name: 'feature:subscribe', task: subscribe },
-        { name: 'feature:subtember', task: subtember },
-        { name: 'feature:update-sub', task: update_sub }
-    ], 4);
-    allConcurrently('Feature Extensions', [
-        { name: 'feature-extension:emotes-showcase', task: emotes_showcase },
-        { name: 'feature-extension:featured-viewer', task: featured_viewer },
-        { name: 'feature-extension:latest-followers', task: latest_followers },
-        { name: 'feature-extension:my-emotes', task: my_emotes }
-    ], 4);
-    allConcurrently('Dynamic Features', [
-        { name: 'dynamic-feature:charity', task: charity },
-        { name: 'dynamic-feature:hype-chat', task: hype_chat },
-        { name: 'dynamic-feature:turbo', task: turbo }
-    ], 4);
-    console.debug(`${consoleHeading} - Finished`);
+  await until(
+    () => !Constants.InIframe ? unsafeWindow.ffz?.addons?.loaded === true && unsafeWindow.ffz?.on !== void 0 : document.readyState === "complete"
+  );
+  console.debug(`${Constants.ConsoleHeading} - Applying`);
+  allConcurrently(
+    "Features",
+    [
+      { name: "feature:settings-menu", task: settings_menu },
+      { name: "feature:styles", task: features_styles },
+      { name: "feature:bits", task: bits },
+      { name: "feature:complete-purchase", task: complete_purchase },
+      { name: "feature:continue-sub", task: continue_sub },
+      { name: "feature:gift", task: gift },
+      { name: "feature:manage-your-sub", task: manage_your_sub },
+      { name: "feature:resubscribe", task: resubscribe },
+      { name: "feature:subscribe", task: subscribe },
+      { name: "feature:subtember", task: subtember },
+      { name: "feature:update-sub", task: update_sub }
+    ],
+    4
+  );
+  allConcurrently(
+    "Feature Extensions",
+    [
+      { name: "feature-extension:emotes-showcase", task: emotes_showcase },
+      { name: "feature-extension:featured-viewer", task: featured_viewer },
+      { name: "feature-extension:latest-followers", task: latest_followers },
+      { name: "feature-extension:my-emotes", task: my_emotes }
+    ],
+    4
+  );
+  allConcurrently(
+    "Dynamic Features",
+    [
+      { name: "dynamic-feature:charity", task: charity },
+      { name: "dynamic-feature:hype-chat", task: hype_chat },
+      { name: "dynamic-feature:turbo", task: turbo }
+    ],
+    4
+  );
+  console.debug(`${Constants.ConsoleHeading} - Finished`);
 })();
 
 /******/ })()

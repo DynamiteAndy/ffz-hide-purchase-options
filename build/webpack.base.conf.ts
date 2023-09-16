@@ -21,7 +21,14 @@ export const baseConfig = {
     rules: [
       {
         test: /\.m?ts$/,
-        loader: 'ts-loader'
+        use: [
+          {
+            loader: 'esbuild-loader',
+            options: {
+              target: 'ES2020'
+            }
+          }
+        ]
       },
       {
         test: /\.s?[ac]ss$/i,

@@ -1,7 +1,7 @@
 {
   "name": "ffz-hide-purchase-options",
-  "version": "2.2.1",
-    "engines": {
+  "version": "3.0.0",
+  "engines": {
     "node": ">=18.0.0"
   },
   "private": true,
@@ -40,6 +40,7 @@
     "@typescript-eslint/utils": "^6.6.0",
     "concurrently": "^8.2.1",
     "cross-env": "^7.0.3",
+    "esbuild-loader": "^4.0.2",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.6.0",
@@ -52,7 +53,6 @@
     "sass-loader": "^13.3.2",
     "sass-to-string": "^1.6.3",
     "terser-webpack-plugin": "^5.3.9",
-    "ts-loader": "^9.4.4",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
@@ -64,7 +64,6 @@
     "webpack-merge": "^5.9.0",
     "webpack-sources": "^3.2.3"
   },
-  "url": "https://github.com/andrewcartwright1/ffz-hide-purchase-options",
-  "dependencies": {
-  }
+  "url": "https://github.com/andrewcartwright1/ffz-hide-purchase-options"
 }
+

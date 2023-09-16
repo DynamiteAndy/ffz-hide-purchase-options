@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.0
+- Moved from ts-loader to esbuild-loader
+
 ## 2.2.1
 - Fixed some selectors on the subscriptions page
 

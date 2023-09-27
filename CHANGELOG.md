@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.2
+- Fixed selector on gift a sub
+
+## 3.0.1
+- Fixed selector's on continue sub
+
 ## 3.0.0
 - Moved from ts-loader to esbuild-loader
 

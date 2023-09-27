@@ -3,10 +3,15 @@ body {
     &.hide-continue-sub {
       button[aria-label="Continue Sub"],
       button[aria-label="Continue Sub - 7 Days Remaining"],
+      button[aria-label="Continue Sub: 25% off - 7 Days Remaining"],
       button[aria-label="Continue Sub - 6 Days Remaining"],
+      button[aria-label="Continue Sub: 25% off - 6 Days Remaining"],
       button[aria-label="Continue Sub - 5 Days Remaining"],
+      button[aria-label="Continue Sub: 25% off - 5 Days Remaining"],
       button[aria-label="Continue Sub - 4 Days Remaining"],
+      button[aria-label="Continue Sub: 25% off - 4 Days Remaining"],
       button[aria-label="Continue Sub - 3 Days Remaining"],
+      button[aria-label="Continue Sub: 25% off - 3 Days Remaining"],
       button[aria-label="Continue Sub: 25% off"],
       button[data-test-selector="PaidUpgradeButton"] {
         display: none !important;

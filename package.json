@@ -1,6 +1,6 @@
 {
   "name": "ffz-hide-purchase-options",
-  "version": "3.0.0",
+  "version": "3.0.2",
   "engines": {
     "node": ">=18.0.0"
   },
@@ -31,25 +31,25 @@
     "start": "cross-env webpack_watch=true pnpm run build:dev"
   },
   "devDependencies": {
-    "@statoscope/webpack-plugin": "^5.27.0",
-    "@types/node": "^20.5.9",
-    "@types/tampermonkey": "^4.20.2",
-    "@types/webpack-bundle-analyzer": "^4.6.0",
-    "@typescript-eslint/eslint-plugin": "^6.6.0",
-    "@typescript-eslint/parser": "^6.6.0",
-    "@typescript-eslint/utils": "^6.6.0",
+    "@statoscope/webpack-plugin": "^5.28.0",
+    "@types/node": "^20.7.0",
+    "@types/tampermonkey": "^4.20.3",
+    "@types/webpack-bundle-analyzer": "^4.6.1",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "@typescript-eslint/utils": "^6.7.3",
     "concurrently": "^8.2.1",
     "cross-env": "^7.0.3",
     "esbuild-loader": "^4.0.2",
-    "eslint": "^8.48.0",
+    "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-import-resolver-webpack": "^0.13.7",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.3",
     "prettier": "^3.0.3",
-    "sass": "^1.66.1",
+    "sass": "^1.68.0",
     "sass-loader": "^13.3.2",
     "sass-to-string": "^1.6.3",
     "terser-webpack-plugin": "^5.3.9",
@@ -66,4 +66,3 @@
   },
   "url": "https://github.com/andrewcartwright1/ffz-hide-purchase-options"
 }
-

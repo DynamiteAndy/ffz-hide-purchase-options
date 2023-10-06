@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.3
+- Fixed selector on continue sub
+
 ## 3.0.2
 - Fixed selector on gift a sub
 

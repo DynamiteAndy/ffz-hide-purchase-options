@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name          FFZ Hide Purchase Options
 // @namespace     dynamite-andy
-// @version       3.0.3
-// @iconURL       https://github.com/andrewcartwright1/ffz-hide-purchase-options/blob/main/src/resources/icons/favicon32x32.ico?raw=true
-// @icon64URL     https://github.com/andrewcartwright1/ffz-hide-purchase-options/blob/main/src/resources/icons/favicon64x64.ico?raw=true
-// @updateURL     https://github.com/andrewcartwright1/ffz-hide-purchase-options/raw/main/dist/ffz-hide-purchase-options.user.js
-// @downloadURL   https://github.com/andrewcartwright1/ffz-hide-purchase-options/raw/main/dist/ffz-hide-purchase-options.user.js
-// @supportURL    https://github.com/andrewcartwright1/ffz-hide-purchase-options/issues
+// @version       3.1.0
+// @iconURL       https://github.com/dynamiteandy/ffz-hide-purchase-options/blob/main/src/resources/icons/favicon32x32.ico?raw=true
+// @icon64URL     https://github.com/dynamiteandy/ffz-hide-purchase-options/blob/main/src/resources/icons/favicon64x64.ico?raw=true
+// @updateURL     https://github.com/dynamiteandy/ffz-hide-purchase-options/raw/main/dist/ffz-hide-purchase-options.user.js
+// @downloadURL   https://github.com/dynamiteandy/ffz-hide-purchase-options/raw/main/dist/ffz-hide-purchase-options.user.js
+// @supportURL    https://github.com/dynamiteandy/ffz-hide-purchase-options/issues
 // @description   Unofficial FFZ addon giving options to remove purchases from twitch
 // @author        Dynamite Andy - dynamiteandy@gmail.com
 // @include       http://twitch.tv/*
@@ -32,18 +32,16 @@ var __webpack_exports__ = {};
 ;// CONCATENATED MODULE: ./src/globals/constants.ts
 var _a, _b, _c, _d;
 const settingPrefix = "addon.hide_purchase_options";
-const _Constants = class _Constants {
-};
-_Constants.InIframe = window.location.host !== "www.twitch.tv";
-_Constants.IsExtension = window.location.host.endsWith("ext-twitch.tv");
-_Constants.ConsoleHeading = _Constants.IsExtension ? "[hide-purchase-options (Extension)]" : "[hide-purchase-options (Twitch)]";
-_Constants.Styles = (_b = class {
+class Constants {
+}
+Constants.InIframe = window.location.host !== "www.twitch.tv";
+Constants.IsExtension = window.location.host.endsWith("ext-twitch.tv");
+Constants.Styles = (_b = class {
 }, _b.Root = "ffz-hide-purchase-options", _b.Base = "ffz-h-p-hide", _b.GiftASub = "hide-gift-a-sub", _b.ManageYourSub = "hide-manage-your-sub", _b.Bits = "hide-bits", _b.Subscribe = "hide-subscribe", _b.Resubscribe = "hide-resubscribe", _b.ContinueSub = "hide-continue-sub", _b.UpdateSub = "hide-update-sub", _b.CompletePurchase = "hide-complete-purchase", _b.Subtember = "hide-subtember", _b.Turbo = "hide-turbo", _b.HypeChat = "hide-hype-chat", _b.Charity = "hide-charity", _b.Extensions = (_a = class {
 }, _a.EmotesShowcase = "hide-emotes-showcase", _a.LatestFollowers = "hide-latest-followers", _a.MyEmotes = "hide-my-emotes", _a.FeaturedViewer = "hide-featured-viewer", _a), _b);
-_Constants.Settings = (_d = class {
+Constants.Settings = (_d = class {
 }, _d.prefix = `${settingPrefix}.support-panel`, _d.GiftASub = `${_d.prefix}.gift_a_sub`, _d.ManageYourSub = `${_d.prefix}.go_above_and_beyond`, _d.Bits = `${_d.prefix}.bits`, _d.ContinueSub = `${_d.prefix}.continue_sub`, _d.UpdateSub = `${_d.prefix}.update_sub`, _d.Subscribe = `${_d.prefix}.subscribe`, _d.Resubscribe = `${_d.prefix}.resubscribe`, _d.CompletePurchase = `${_d.prefix}.complete_purchase`, _d.Subtember = `${_d.prefix}.subtember`, _d.Turbo = `${_d.prefix}.turbo`, _d.HypeChat = `${_d.prefix}.hype_chat`, _d.Charity = `${_d.prefix}.charity`, _d.Extensions = (_c = class {
 }, _c.prefix = `${settingPrefix}.support-panel.extensions`, _c.Text = `${_c.prefix}.text`, _c.EmotesShowcase = `${_c.prefix}.emotes_showcase`, _c.LatestFollowers = `${_c.prefix}.latest_followers`, _c.MyEmotes = `${_c.prefix}.my_emotes`, _c.FeaturedViewer = `${_c.prefix}.featured_viewer`, _c), _d);
-let Constants = _Constants;
 
 ;// CONCATENATED MODULE: ./src/globals/config.ts
 /* harmony default export */ const config = ({
@@ -76,14 +74,8 @@ const until = async (f, timeoutMs = 1e4) => {
 };
 
 ;// CONCATENATED MODULE: ./src/utilities/promise-util.ts
-
 const promisify = (fn) => async (...args) => fn(args);
-const needsPromisifying = (fn) => {
-  if (fn.constructor.name === "AsyncFunction") {
-    return false;
-  }
-  return true;
-};
+const needsPromisifying = (fn) => fn.constructor.name === "AsyncFunction";
 const allConcurrently = async (name, arr, max = 3) => {
   if (arr.length === 0) {
     return Promise.resolve([]);
@@ -94,12 +86,7 @@ const allConcurrently = async (name, arr, max = 3) => {
     while (index < arr.length) {
       const curIndex = index++;
       const task = needsPromisifying(arr[curIndex].task) ? promisify(arr[curIndex].task) : arr[curIndex].task;
-      console.debug(
-        `${Constants.ConsoleHeading} - ${arr[curIndex].name}`,
-        `Promisified: ${needsPromisifying(arr[curIndex].task)}`
-      );
       results[curIndex] = await task();
-      console.debug(`${Constants.ConsoleHeading} - ${arr[curIndex].name}`, results[curIndex]);
     }
   };
   const threads = [];
@@ -109,66 +96,6 @@ const allConcurrently = async (name, arr, max = 3) => {
   await Promise.all(threads);
   return results;
 };
-
-;// CONCATENATED MODULE: ./src/utilities/html-element-util.ts
-const waitForElement = (selector, element = document.documentElement, timeoutMS = 1e4) => new Promise((resolve) => {
-  if (element === null) {
-    return null;
-  }
-  if (element === document.documentElement) {
-    element = document.documentElement;
-  }
-  if (element.querySelector(selector)) {
-    return resolve(element.querySelector(selector));
-  }
-  let observer;
-  const timeout = setTimeout(() => {
-    observer.disconnect();
-    resolve(null);
-  }, timeoutMS);
-  observer = new MutationObserver(() => {
-    if (element.querySelector(selector)) {
-      observer.disconnect();
-      clearTimeout(timeout);
-      resolve(element.querySelector(selector));
-    }
-  });
-  observer.observe(element, {
-    childList: true,
-    subtree: true
-  });
-});
-const waitForElements = (selector, element = document.documentElement, timeoutMS = 1e4) => new Promise((resolve) => {
-  if (element === null) {
-    return [];
-  }
-  if (element === document.documentElement) {
-    element = document.documentElement;
-  }
-  if (element.querySelector(selector)) {
-    return resolve([...element.querySelectorAll(selector)]);
-  }
-  let observer;
-  const timeout = setTimeout(() => {
-    observer.disconnect();
-    resolve([]);
-  }, timeoutMS);
-  observer = new MutationObserver(() => {
-    if (element.querySelector(selector)) {
-      observer.disconnect();
-      clearTimeout(timeout);
-      resolve([...element.querySelectorAll(selector)]);
-    }
-  });
-  observer.observe(element, {
-    childList: true,
-    subtree: true
-  });
-});
-
-;// CONCATENATED MODULE: ./src/utilities/index.ts
-
-
 
 ;// CONCATENATED MODULE: ./src/components/pub-sub.ts
 function PubSub() {
@@ -296,6 +223,60 @@ class Setting {
 /* harmony default export */ const continue_sub = (() => {
   const setting = new Setting(Constants.Settings.ContinueSub, Constants.Styles.ContinueSub);
   setting.listen();
+});
+
+;// CONCATENATED MODULE: ./src/utilities/html-element-util.ts
+const waitForElement = (selector, element = document.documentElement, timeoutMS = 1e4) => new Promise((resolve) => {
+  if (!element) {
+    return resolve(null);
+  }
+  const foundElement = element.querySelector(selector);
+  if (foundElement) {
+    return resolve(foundElement);
+  }
+  let observer;
+  const timeout = setTimeout(() => {
+    observer.disconnect();
+    resolve(null);
+  }, timeoutMS);
+  observer = new MutationObserver(() => {
+    const foundElement2 = element.querySelector(selector);
+    if (foundElement2) {
+      observer.disconnect();
+      clearTimeout(timeout);
+      resolve(foundElement2);
+    }
+  });
+  observer.observe(element, {
+    childList: true,
+    subtree: true
+  });
+});
+const waitForElements = (selector, element = document.documentElement, timeoutMS = 1e4) => new Promise((resolve) => {
+  if (!element) {
+    return resolve(null);
+  }
+  const elements = element.querySelectorAll(selector);
+  if (elements.length > 0) {
+    return resolve(Array.from(elements));
+  }
+  let observer;
+  const timeout = setTimeout(() => {
+    observer.disconnect();
+    resolve(null);
+  }, timeoutMS);
+  observer = new MutationObserver(() => {
+    const elements2 = element.querySelectorAll(selector);
+    if (elements2.length > 0) {
+      observer.disconnect();
+      clearTimeout(timeout);
+      resolve(Array.from(elements2));
+    }
+  });
+  observer.observe(element, {
+    childList: true,
+    subtree: true
+  });
 });
 
 ;// CONCATENATED MODULE: ./src/features/gift.ts
@@ -692,44 +673,30 @@ const listen = () => {
   await until(
     () => !Constants.InIframe ? unsafeWindow.ffz?.addons?.loaded === true && unsafeWindow.ffz?.on !== void 0 : document.readyState === "complete"
   );
-  console.debug(`${Constants.ConsoleHeading} - Applying`);
-  allConcurrently(
-    "Features",
-    [
-      { name: "feature:settings-menu", task: settings_menu },
-      { name: "feature:styles", task: features_styles },
-      { name: "feature:bits", task: bits },
-      { name: "feature:complete-purchase", task: complete_purchase },
-      { name: "feature:continue-sub", task: continue_sub },
-      { name: "feature:gift", task: gift },
-      { name: "feature:manage-your-sub", task: manage_your_sub },
-      { name: "feature:resubscribe", task: resubscribe },
-      { name: "feature:subscribe", task: subscribe },
-      { name: "feature:subtember", task: subtember },
-      { name: "feature:update-sub", task: update_sub }
-    ],
-    4
-  );
-  allConcurrently(
-    "Feature Extensions",
-    [
-      { name: "feature-extension:emotes-showcase", task: emotes_showcase },
-      { name: "feature-extension:featured-viewer", task: featured_viewer },
-      { name: "feature-extension:latest-followers", task: latest_followers },
-      { name: "feature-extension:my-emotes", task: my_emotes }
-    ],
-    4
-  );
-  allConcurrently(
-    "Dynamic Features",
-    [
-      { name: "dynamic-feature:charity", task: charity },
-      { name: "dynamic-feature:hype-chat", task: hype_chat },
-      { name: "dynamic-feature:turbo", task: turbo }
-    ],
-    4
-  );
-  console.debug(`${Constants.ConsoleHeading} - Finished`);
+  allConcurrently("Features", [
+    { name: "feature:settings-menu", task: settings_menu },
+    { name: "feature:styles", task: features_styles },
+    { name: "feature:bits", task: bits },
+    { name: "feature:complete-purchase", task: complete_purchase },
+    { name: "feature:continue-sub", task: continue_sub },
+    { name: "feature:gift", task: gift },
+    { name: "feature:manage-your-sub", task: manage_your_sub },
+    { name: "feature:resubscribe", task: resubscribe },
+    { name: "feature:subscribe", task: subscribe },
+    { name: "feature:subtember", task: subtember },
+    { name: "feature:update-sub", task: update_sub }
+  ]);
+  allConcurrently("Feature Extensions", [
+    { name: "feature-extension:emotes-showcase", task: emotes_showcase },
+    { name: "feature-extension:featured-viewer", task: featured_viewer },
+    { name: "feature-extension:latest-followers", task: latest_followers },
+    { name: "feature-extension:my-emotes", task: my_emotes }
+  ]);
+  allConcurrently("Dynamic Features", [
+    { name: "dynamic-feature:charity", task: charity },
+    { name: "dynamic-feature:hype-chat", task: hype_chat },
+    { name: "dynamic-feature:turbo", task: turbo }
+  ]);
 })();
 
 /******/ })()

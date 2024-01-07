@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.1.0
+- Updated dependencies
+
 ## 3.0.3
 - Fixed selector on continue sub
 

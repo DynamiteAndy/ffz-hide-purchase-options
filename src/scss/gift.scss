@@ -1,10 +1,10 @@
 body {
   &.ffz-hide-purchase-options {
     &.hide-gift-a-sub {
-      button[aria-label="Gift a Sub"],
-      button[aria-label="Gift a Sub: 25% off"],
-      button[data-test-selector="gift-subscribe-button"],
-      button[data-test-selector="take-the-leaderboard-prompt-button"] {
+      button[aria-label='Gift a Sub'],
+      button[aria-label='Gift a Sub: 25% off'],
+      button[data-test-selector='gift-subscribe-button'],
+      button[data-test-selector='take-the-leaderboard-prompt-button'] {
         display: none !important;
       }
     }

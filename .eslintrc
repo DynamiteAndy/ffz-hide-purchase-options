@@ -8,29 +8,40 @@
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "parserOptions": { "project": ["./tsconfig.json"] },
-  "plugins": [
-    "@typescript-eslint",
-    "import",
-    "prettier"
-  ],
-  "rules": { 
-    "semi": ["error", "always"],
+  "parserOptions": { "project": ["./tsconfig.json"], "sourceType": "module" },
+  "plugins": ["@typescript-eslint", "import", "prettier"],
+  "rules": {
     "no-console": 0,
-    "quotes": [2, "single", { "avoidEscape": true }],
-    "keyword-spacing": [2, { "after": true }],
     "import/no-unresolved": "error",
     "import/named": "error",
-    "import/order": ["error", {"groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object"]}],
-    "comma-dangle": ["error", "never"],
-    "curly": "error"
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object"
+        ]
+      }
+    ],
+    "curly": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
       "typescript": {},
       "node": {
         "paths": ["./src"],
-        "extensions": [".js", ".ts" ]
+        "extensions": [".js", ".ts"]
       },
       "webpack": {
         "config": "./build/webpack.base.conf.ts"

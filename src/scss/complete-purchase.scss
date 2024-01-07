@@ -1,7 +1,7 @@
 body {
   &.ffz-hide-purchase-options {
     &.hide-manage-your-sub {
-      button[data-a-target="spm-complete-purchase-button"] {
+      button[data-a-target='spm-complete-purchase-button'] {
         display: none !important;
       }
     }

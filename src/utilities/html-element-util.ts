@@ -4,21 +4,17 @@ export const waitForElement = (
   timeoutMS = 10000
 ): Promise<HTMLElement> =>
   new Promise((resolve) => {
-    if (element === null) {
-      return null;
+    if (!element) {
+      return resolve(null);
     }
 
-    if (element === document.documentElement) {
-      element = document.documentElement;
+    const foundElement = element.querySelector(selector);
+    if (foundElement) {
+      return resolve(foundElement as HTMLElement);
     }
 
-    if (element.querySelector(selector)) {
-      return resolve(element.querySelector(selector) as HTMLElement);
-    }
-
-    /* eslint-disable prefer-const */
+    // eslint-disable-next-line prefer-const
     let observer: MutationObserver;
-    /* eslint-enable prefer-const */
 
     const timeout = setTimeout(() => {
       observer.disconnect();
@@ -26,10 +22,11 @@ export const waitForElement = (
     }, timeoutMS);
 
     observer = new MutationObserver(() => {
-      if (element.querySelector(selector)) {
+      const foundElement = element.querySelector(selector);
+      if (foundElement) {
         observer.disconnect();
         clearTimeout(timeout);
-        resolve(element.querySelector(selector) as HTMLElement);
+        resolve(foundElement as HTMLElement);
       }
     });
 
@@ -45,32 +42,29 @@ export const waitForElements = (
   timeoutMS = 10000
 ): Promise<HTMLElement[]> =>
   new Promise((resolve) => {
-    if (element === null) {
-      return [];
+    if (!element) {
+      return resolve(null);
     }
 
-    if (element === document.documentElement) {
-      element = document.documentElement;
+    const elements = element.querySelectorAll(selector);
+    if (elements.length > 0) {
+      return resolve(Array.from(elements) as HTMLElement[]);
     }
 
-    if (element.querySelector(selector)) {
-      return resolve([...element.querySelectorAll(selector)] as HTMLElement[]);
-    }
-
-    /* eslint-disable prefer-const */
+    // eslint-disable-next-line prefer-const
     let observer: MutationObserver;
-    /* eslint-enable prefer-const */
 
     const timeout = setTimeout(() => {
       observer.disconnect();
-      resolve([]);
+      resolve(null);
     }, timeoutMS);
 
     observer = new MutationObserver(() => {
-      if (element.querySelector(selector)) {
+      const elements = element.querySelectorAll(selector);
+      if (elements.length > 0) {
         observer.disconnect();
         clearTimeout(timeout);
-        resolve([...element.querySelectorAll(selector)] as HTMLElement[]);
+        resolve(Array.from(elements) as HTMLElement[]);
       }
     });
 

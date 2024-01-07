@@ -3,9 +3,6 @@ const settingPrefix = 'addon.hide_purchase_options';
 export class Constants {
   static readonly InIframe = window.location.host !== 'www.twitch.tv';
   static readonly IsExtension = window.location.host.endsWith('ext-twitch.tv');
-  static readonly ConsoleHeading = this.IsExtension
-    ? '[hide-purchase-options (Extension)]'
-    : '[hide-purchase-options (Twitch)]';
 
   static Styles = class {
     static readonly Root = 'ffz-hide-purchase-options';

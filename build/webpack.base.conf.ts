@@ -1,6 +1,4 @@
 import { resolve } from 'path';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import StatoscopeWebpackPlugin from '@statoscope/webpack-plugin';
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 
 export const baseConfig = {
@@ -32,9 +30,14 @@ export const baseConfig = {
       },
       {
         test: /\.s?[ac]ss$/i,
-        use: ['sass-to-string', 'sass-loader']
+        use: [
+          {
+            loader: resolve(__dirname, './loaders/sass-to-string-loader.ts')
+          },
+          'sass-loader'
+        ]
       }
     ]
   },
-  plugins: process.env.webpack_analyse ? [new BundleAnalyzerPlugin(), new StatoscopeWebpackPlugin()] : []
+  plugins: []
 };

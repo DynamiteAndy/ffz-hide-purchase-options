@@ -1,7 +1,7 @@
 body {
   &.ffz-hide-purchase-options {
     &.hide-hype-chat {
-      button[aria-label="Hype Chat"] {
+      button[aria-label='Hype Chat'] {
         display: none !important;
       }
     }

@@ -1,8 +1,8 @@
 body {
   &.ffz-hide-purchase-options {
     &.hide-resubscribe {
-      button[aria-label="Resubscribe: 25% off"],
-      button[aria-label="Resubscribe"] {
+      button[aria-label='Resubscribe: 25% off'],
+      button[aria-label='Resubscribe'] {
         display: none !important;
       }
     }

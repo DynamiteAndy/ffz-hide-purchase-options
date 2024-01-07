@@ -1,11 +1,11 @@
 body {
   &.ffz-hide-purchase-options {
     &.hide-subscribe {
-      button[aria-label="Subscribe: 25% off"],
-      button[aria-label="Subscribe"],
-      button[data-a-target="subscribe-button-tier-1000"],
-      button[data-a-target="subscribe-button-tier-2000"],
-      button[data-a-target="subscribe-button-tier-3000"] {
+      button[aria-label='Subscribe: 25% off'],
+      button[aria-label='Subscribe'],
+      button[data-a-target='subscribe-button-tier-1000'],
+      button[data-a-target='subscribe-button-tier-2000'],
+      button[data-a-target='subscribe-button-tier-3000'] {
         display: none !important;
       }
     }

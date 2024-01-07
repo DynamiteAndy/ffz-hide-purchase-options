@@ -1,8 +1,8 @@
 body {
   &.ffz-hide-purchase-options {
     &.hide-manage-your-sub {
-      button[aria-label="Manage Your Sub: 25% off"],
-      button[aria-label="Manage Your Sub"] {
+      button[aria-label='Manage Your Sub: 25% off'],
+      button[aria-label='Manage Your Sub'] {
         display: none !important;
       }
     }

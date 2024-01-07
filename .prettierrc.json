@@ -4,14 +4,8 @@
     "trailingComma": "none",
     "bracketSameLine": true,
     "htmlWhitespaceSensitivity": "ignore",
-    "endOfLine":"crlf",
+    "endOfLine":"auto",
     "overrides": [
-        {
-            "files": "*.hbs",
-            "options": {
-                "singleQuote": false 
-            }
-        },
         {
             "files": "*.ts",
             "options": {

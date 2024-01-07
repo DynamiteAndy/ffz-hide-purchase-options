@@ -1,7 +1,7 @@
 body {
   &.ffz-hide-purchase-options {
     &.hide-latest-followers {
-      &[data-active="recent"] {
+      &[data-active='recent'] {
         #recent-panel {
           .btn {
             &.buy {

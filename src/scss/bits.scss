@@ -1,16 +1,16 @@
 body {
   &.ffz-hide-purchase-options {
     &.hide-bits {
-      button[aria-label="Bits"],
-      button[data-test-selector="get-bits-button"],
-      button[data-a-target="top-nav-get-bits-button"],
-      button[data-a-target="bits-purchase-button-100"],
-      button[data-a-target="bits-purchase-button-500"],
-      button[data-a-target="bits-purchase-button-1500"],
-      button[data-a-target="bits-purchase-button-5000"],
-      button[data-a-target="bits-purchase-button-10000"],
-      button[data-a-target="bits-purchase-button-25000"],
-      a[data-test-selector="test_selector_buy_bits_button"] {
+      button[aria-label='Bits'],
+      button[data-test-selector='get-bits-button'],
+      button[data-a-target='top-nav-get-bits-button'],
+      button[data-a-target='bits-purchase-button-100'],
+      button[data-a-target='bits-purchase-button-500'],
+      button[data-a-target='bits-purchase-button-1500'],
+      button[data-a-target='bits-purchase-button-5000'],
+      button[data-a-target='bits-purchase-button-10000'],
+      button[data-a-target='bits-purchase-button-25000'],
+      a[data-test-selector='test_selector_buy_bits_button'] {
         display: none !important;
       }
     }

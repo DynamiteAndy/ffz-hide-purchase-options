@@ -19,6 +19,7 @@
     "preinstall": "npx only-allow pnpm",
     "analyse": "cross-env webpack_analyse=true webpack --config ./build/webpack.dev.conf.ts",
     "build": "concurrently --group --max-processes 3 --names \"dev,prod,prod-min\" \"pnpm run build:dev\" \"pnpm run build:prod\" \"pnpm run build:prod-min\"",
+    "build:release": "concurrently --group --max-processes 2 --names \"prod,prod-min\" \"pnpm run build:prod\" \"pnpm run build:prod-min\"",
     "build:dev": "webpack --config ./build/webpack.dev.conf.ts",
     "build:prod": "webpack --config ./build/webpack.prod.conf.ts",
     "build:prod-min": "cross-env webpack_minimize=true webpack --config ./build/webpack.prod.conf.ts",
